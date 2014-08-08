@@ -89,7 +89,7 @@ CREATE TABLE `ezbinaryfile` (
 
 LOCK TABLES `ezbinaryfile` WRITE;
 /*!40000 ALTER TABLE `ezbinaryfile` DISABLE KEYS */;
-INSERT INTO `ezbinaryfile` VALUES (427,0,'e76c8776dccaba21cbfc21f52a02e19f.png','image/png','eZ_logo_color_black_RGB_150dpi.png',1),(432,0,'5abdfbefae47de9dca63bc43e3a23ff4.png','image/png','eZ_logo_color_white_RGB_150dpi.png',1),(492,0,'63cd472dd7819da7b75e8e2fee507c68.pdf','application/pdf','20130116_whitepaper_ezpublish5 light.pdf',1),(547,2,'cbca3a8812784f3989158d295cc0c016.mp4','video/mp4','ezshortintro.mp4',1);
+INSERT INTO `ezbinaryfile` VALUES (427,0,'e76c8776dccaba21cbfc21f52a02e19f.png','image/png','eZ_logo_color_black_RGB_150dpi.png',1),(432,0,'5abdfbefae47de9dca63bc43e3a23ff4.png','image/png','eZ_logo_color_white_RGB_150dpi.png',1),(492,0,'63cd472dd7819da7b75e8e2fee507c68.pdf','application/pdf','20130116_whitepaper_ezpublish5 light.pdf',1),(547,3,'cbca3a8812784f3989158d295cc0c016.mp4','video/mp4','ezshortintro.mp4',1);
 /*!40000 ALTER TABLE `ezbinaryfile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3675,4 +3675,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-08  2:06:22
+-- Dump completed on 2014-08-08  7:49:42
