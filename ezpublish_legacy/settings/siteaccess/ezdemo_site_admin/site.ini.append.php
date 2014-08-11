@@ -4,8 +4,8 @@
 DatabaseImplementation=ezmysqli
 Server=localhost
 Port=
-User=xrow
-Password=openpass
+User=root
+Password=
 Database=ezpublish
 Charset=
 Socket=disabled
@@ -15,7 +15,7 @@ EmailReceiver=
 
 [SiteSettings]
 SiteName=eZ Publish Demo Site
-SiteURL=stable.example.com
+SiteURL=ezpublish.example.com
 DefaultPage=content/dashboard
 LoginPage=custom
 
@@ -52,6 +52,6 @@ CachedViewPreferences[full]=admin_navigation_content=1;admin_children_viewmode=l
 TranslationList=eng-US
 
 [MailSettings]
-AdminEmail=ezpublish@fake.xrow.net
+AdminEmail=info@ez.no
 EmailSender=
 */ ?>

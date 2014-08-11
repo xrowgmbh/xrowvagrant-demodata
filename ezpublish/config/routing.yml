@@ -23,3 +23,6 @@ _ezpublishRestOptionsRoutes:
 
 _ezpublishDemoRoutes:
     resource: "@eZDemoBundle/Resources/config/routing.yml"
+
+_ezpublishPlatformUIRoutes:
+    resource: "@eZPlatformUIBundle/Resources/config/routing.yml"

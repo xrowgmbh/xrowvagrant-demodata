@@ -4,8 +4,8 @@
 DatabaseImplementation=ezmysqli
 Server=localhost
 Port=
-User=xrow
-Password=openpass
+User=root
+Password=
 Database=ezpublish
 Charset=
 Socket=disabled
@@ -18,9 +18,9 @@ SessionNamePerSiteAccess=disabled
 
 [SiteSettings]
 SiteName=eZ Publish Demo Site
-SiteURL=stable.example.com
+SiteURL=ezpublish.example.com
 LoginPage=embedded
-AdditionalLoginFormActionURL=http://stable.example.com/ezdemo_site_admin/user/login
+AdditionalLoginFormActionURL=http://ezpublish.example.com/ezdemo_site_admin/user/login
 
 [UserSettings]
 RegistrationEmail=
@@ -57,6 +57,6 @@ VarDir=var/ezdemo_site
 TranslationList=eng-US
 
 [MailSettings]
-AdminEmail=ezpublish@fake.xrow.net
+AdminEmail=info@ez.no
 EmailSender=
 */ ?>

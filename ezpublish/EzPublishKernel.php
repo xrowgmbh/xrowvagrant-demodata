@@ -40,11 +40,11 @@ class EzPublishKernel extends Kernel
             new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new \Nelmio\CorsBundle\NelmioCorsBundle()
         );
-        if ( is_dir( realpath( "../vendor/ezsystems/platform-ui-bundle" ) ) )
+        if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/ezsystems/platform-ui-bundle" ) ) )
         {
             $bundles[] = new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle();
         }
-        if ( is_dir( realpath( "../vendor/knplabs/knp-menu-bundle" ) ) )
+        if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/knplabs/knp-menu-bundle" ) ) )
         {
             $bundles[] = new \WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle();
             $bundles[] = new \Knp\Bundle\MenuBundle\KnpMenuBundle();

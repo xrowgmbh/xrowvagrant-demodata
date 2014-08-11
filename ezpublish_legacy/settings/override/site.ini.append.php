@@ -3,7 +3,6 @@
 [ExtensionSettings]
 ActiveExtensions[]
 ActiveExtensions[]=ezjscore
-ActiveExtensions[]=ezfind
 ActiveExtensions[]=ezoe
 ActiveExtensions[]=ezformtoken
 ActiveExtensions[]=ezstarrating
@@ -15,8 +14,8 @@ ActiveExtensions[]=ezie
 ActiveExtensions[]=ezodf
 ActiveExtensions[]=ezprestapiprovider
 ActiveExtensions[]=ezmultiupload
+ActiveExtensions[]=eztags
 ActiveExtensions[]=ezautosave
-ActiveExtensions[]=ez_network
 
 [Session]
 SessionNameHandler=custom
@@ -56,7 +55,7 @@ VarDir=var/ezdemo_site
 
 [MailSettings]
 Transport=sendmail
-AdminEmail=ezpublish@fake.xrow.net
+AdminEmail=info@ez.no
 EmailSender=
 
 [EmbedViewModeSettings]

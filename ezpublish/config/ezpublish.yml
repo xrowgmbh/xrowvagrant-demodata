@@ -4,8 +4,8 @@ doctrine:
             ger_repository_connection:
                 driver: pdo_mysql
                 host: localhost
-                user: xrow
-                password: openpass
+                user: root
+                password: null
                 dbname: ezpublish
                 charset: UTF8
 ezpublish:
@@ -582,7 +582,7 @@ ezpublish:
 stash:
     caches:
         default:
-            handlers:
+            drivers:
                 - FileSystem
             inMemory: true
             registerDoctrineAdapter: false
