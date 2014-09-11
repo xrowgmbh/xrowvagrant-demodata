@@ -40,6 +40,10 @@ class EzPublishKernel extends Kernel
             new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new \Nelmio\CorsBundle\NelmioCorsBundle()
         );
+        if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/xrow/ezpublish-solrdocs-bundle" ) ) )
+        {
+            $bundles[] = new xrow\EzPublishSolrDocsBundle\xrowEzPublishSolrDocsBundle();
+        }
         if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/ezsystems/platform-ui-bundle" ) ) )
         {
             $bundles[] = new EzSystems\PlatformUIBundle\EzSystemsPlatformUIBundle();
