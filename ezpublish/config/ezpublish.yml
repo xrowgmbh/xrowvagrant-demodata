@@ -586,3 +586,16 @@ stash:
                 - FileSystem
             inMemory: true
             registerDoctrineAdapter: false
+fos_http_cache:
+    proxy_client:
+        # "varnish" is used, even when using Symfony HttpCache.
+        default: varnish
+        varnish:
+            # Means http_cache.purge_servers defined for current SiteAccess.
+            servers: [$http_cache.purge_servers$]
+
+    user_context:
+        enabled: true
+        # User context hash is cached during 10min
+        hash_cache_ttl: 600
+        user_hash_header: X-User-Hash
