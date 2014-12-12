@@ -584,6 +584,8 @@ stash:
         default:
             drivers:
                 - FileSystem
+                    filePermissions: 0666
+                    dirPermissions: 0770
             inMemory: true
             registerDoctrineAdapter: false
 fos_http_cache:
