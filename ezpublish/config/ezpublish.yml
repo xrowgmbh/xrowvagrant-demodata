@@ -587,7 +587,7 @@ stash:
             registerDoctrineAdapter: false
             FileSystem:
                 filePermissions: 0666
-                dirPermissions: 0770
+                dirPermissions: 0777
             Memcache:
                 prefix_key: ezdemo_
                 retry_timeout: 1
