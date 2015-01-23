@@ -51,9 +51,8 @@ EOL
 rm -f composer.json
 wget --no-check-certificate -O composer.json https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/composer.json
 
-composer -n update
-composer -n require --prefer-dist ezsystems/ezfind-ls:dev-master
-composer -n require --prefer-dist ezsystems/eztags-ls
+composer update --no-interaction --with-dependencies
+
 chmod 755 ezpublish/console
 
 ezpublish/console -n assets:install --symlink --relative web
