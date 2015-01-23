@@ -1,4 +1,7 @@
-#!/usr/bin/env sh
+#!/bin/sh
+
+set -e
+set -x
 
 if [ ! -d ./web ]; then
   mkdir ./web
@@ -26,10 +29,6 @@ sed -i "s/CURLOPT_CONNECTTIMEOUT, 3/CURLOPT_CONNECTTIMEOUT, 10/g" ezpublish_lega
 sed -i "s/\/\/umask(/umask(/g" ezpublish/console
 sed -i '/<?php/ a\
 umask(0000);' web/index.php
-# no clue!
-#sed -i "/^\[RepositorySettings\]/,/^\[/ {
-#        s|^#\?RemotePackagesIndexURL[[:blank:]]*=.*|RemotePackagesIndexURL="${PACKAGES}"|
-#}" ezpublish_legacy/settings/package.ini
 
 sed -i "/^\[RepositorySettings\]/,/^\[/ {
         s|^RemotePackagesIndexURL[[:blank:]]*=.*|RemotePackagesIndexURL=http:\/\/packages.ez.no\/ezpublish\/5.4\/5.4.0\/|
@@ -49,21 +48,66 @@ cat <<EOL > ./auth.json
 }
 EOL
 composer -n update
-composer -n require --prefer-dist ezsystems/ezfind-ls:${VERSION}.*
+composer -n require --prefer-dist ezsystems/ezfind-ls:dev-master
 composer -n require --prefer-dist ezsystems/eztags-ls
-#composer -n require ezsystems/platform-ui-bundle:dev-master
-#composer -n require xrow/ezpublish-solrdocs-bundle:dev-master
-
 chmod 755 ezpublish/console
+
 ezpublish/console -n assets:install --symlink --relative web
 ezpublish/console -n ezpublish:legacy:assets_install --symlink --relative web
-ezpublish/console -n assetic:dump --env=prod
+# ether
+#ezpublish/console -n assetic:dump --env=prod
+# or
 ezpublish/console -n assetic:dump --env=dev
 composer -n dump-autoload --optimize
+
+# get demodata
+if [ ! ${DATABASE_PASSWORD} ]; then
+    mysqlauth=" -h ${DATABASE_SERVER} -u ${DATABASE_USER}"
+else
+    mysqlauth=" -h ${DATABASE_SERVER} -u ${DATABASE_USER} -p${DATABASE_PASSWORD}"
+fi
+rm -Rf ezpublish_legacy/settings/override ezpublish_legacy/settings/siteaccess ezpublish_legacy/var/ezdemo_site/log ezpublish_legacy/var/ezdemo_site/cache
+wget --no-check-certificate -O dump.zip https://github.com/xrowgmbh/xrowvagrant-demodata/archive/ez-sylius.zip
+unzip -o -d . dump.zip
+cp -r xrowvagrant-demodata-ez-sylius/* .
+rm -Rf xrowvagrant-demodata-ez-sylius
+rm -Rf ezpublish_legacy/var/ezdemo_site/log/ ezpublish_legacy/var/ezdemo_site/cache/
+mysql ${mysqlauth} -e"CREATE DATABASE IF NOT EXISTS ${DATABASE_NAME}"
+mysql ${mysqlauth} ${DATABASE_NAME} < ezpublish_legacy/var/ezdemo_site/dump.sql
+rm -Rf dump.zip
+
+cd ezpublish_legacy && php bin/php/ezpgenerateautoloads.php && cd ..
+source /usr/share/ezcluster/bin/tools/fixpermissions.sh
+# Bug https://project.issues.ez.no/IssueView.php?Id=12514&activeItem=1
+echo "For solr indexing run:"
+echo "php ezpublish/console ezpublish:legacy:script --env=dev -n extension/ezfind/bin/php/updatesearchindexsolr.php"
+
+# set the right database
+sed -i "s/host: localhost/host: ${DATABASE_SERVER}/g" ezpublish/config/ezpublish.yml
+sed -i "s/user: root/user: ${DATABASE_USER}/g" ezpublish/config/ezpublish.yml
+sed -i "s/password: null/password: ${DATABASE_PASSWORD}/g" ezpublish/config/ezpublish.yml
+sed -i "s/dbname: ezpublish/dbname: ${DATABASE_NAME}/g" ezpublish/config/ezpublish.yml
+
+sed -i "s/Server=localhost/Server=${DATABASE_SERVER}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
+sed -i "s/User=root/User=${DATABASE_USER}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
+sed -i "s/Password=/Password=${DATABASE_PASSWORD}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
+sed -i "s/Database=ezpublish/Database=${DATABASE_NAME}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
+
+sed -i "s/Server=localhost/Server=${DATABASE_SERVER}/g" ezpublish_legacy/settings/siteaccess/ger/site.ini.append.php
+sed -i "s/User=root/User=${DATABASE_USER}/g" ezpublish_legacy/settings/siteaccess/ger/site.ini.append.php
+sed -i "s/Password=/Password=${DATABASE_PASSWORD}/g" ezpublish_legacy/settings/siteaccess/ger/site.ini.append.php
+sed -i "s/Database=ezpublish/Database=${DATABASE_NAME}/g" ezpublish_legacy/settings/siteaccess/ger/site.ini.append.php
 
 wget --no-check-certificate -O web/robots.txt https://raw.github.com/xrowgmbh/xrowvagrant/master/ezcluster/templates/robots.txt
 wget --no-check-certificate -O web/.htaccess https://raw.github.com/xrowgmbh/xrowvagrant/master/ezcluster/templates/.htaccess
 
-cp -a /usr/share/ezcluster/bin/tools/* .
-source ./insertdemo.sh
-source ./cache.sh
+rm -Rf ezpublish_legacy/var/cache/*
+rm -Rf ezpublish/cache/*
+rm -Rf ezpublish_legacy/var/ezdemo_site/cache/*
+rm -Rf ezpublish_legacy/var/storage/packages/*
+rm -Rf ezpublish_legacy/settings/override/*.php~
+rm -Rf ezpublish_legacy/settings/siteaccess/*/*.php~
+rm -Rf web/var/cache/*
+ezpublish/console cache:clear
+
+echo "Done completely"
