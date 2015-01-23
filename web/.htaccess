@@ -132,13 +132,12 @@ DirectoryIndex index.php
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^plesk-stat/webstat(.*) %{DOCUMENT_ROOT}/../statistics/webstat$1 [L]
-RewriteRule ^plesk-stat(.*) %{DOCUMENT_ROOT}/../statistics$1 [L]
-RewriteRule ^webstat-ssl(.*) %{DOCUMENT_ROOT}/../statistics/webstat-ssl$1 [L]
-RewriteRule ^webstat(.*) %{DOCUMENT_ROOT}/../statistics/webstat$1 [L]
-RewriteRule ^anon_ftpstat(.*) %{DOCUMENT_ROOT}/../statistics/anon_ftpstat$1 [L]
-RewriteRule ^ftpstat(.*) %{DOCUMENT_ROOT}/../statistics/ftpstat$1 [L]
-RewriteRule ^error_docs(.*) %{DOCUMENT_ROOT}/../error_docs$1 [L]
+#Plesk
+#RewriteRule ^plesk-stat/webstat(.*) %{DOCUMENT_ROOT}/../statistics/webstat$1 [L]
+#RewriteRule ^plesk-stat(.*) %{DOCUMENT_ROOT}/../statistics$1 [L]
+#RewriteRule ^webstat-ssl(.*) %{DOCUMENT_ROOT}/../statistics/webstat-ssl$1 [L]
+#RewriteRule ^webstat(.*) %{DOCUMENT_ROOT}/../statistics/webstat$1 [L]
+#RewriteRule ^error_docs(.*) %{DOCUMENT_ROOT}/../error_docs$1 [L]
 
 #The Mainanace swtich... Enter you IP and only you will see your page... 
 # Use %{HTTP:X-FORWARDED-FOR} if you have Varnish infront, use %{REMOTE_ADDR} if you have no Varnish infront.
@@ -148,14 +147,12 @@ RewriteRule ^error_docs(.*) %{DOCUMENT_ROOT}/../error_docs$1 [L]
 #RewriteCond %{REQUEST_URI} ^/sorry.html$
 #RewriteRule .* - [L]
 
-#Clustered setup switch
-#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
-#RewriteRule !index_cluster.php - [C]
-#RewriteRule ^var/([^/]+/)?(storage/images(-versioned)?|cache/public)/.* index_cluster.php
+###
+# All rewrite rules for hostname & protocol
+###
 
 #SEO tweak. Redirect all domains except for the main domain 
 ##LB sometimes comes without a http host header: RewriteCond %{HTTP_HOST} !^$ [NC]
-
 #RewriteCond %{HTTP_HOST} !^admin\..*$ [NC]
 #RewriteCond %{HTTP_HOST} !^www\. [NC]
 #RewriteCond %{HTTP_HOST} !^[0-9]{0,3}\.[0-9]{0,3}\.[0-9]{0,3}\.[0-9]{0,3}$ [NC]
@@ -170,12 +167,22 @@ RewriteRule ^error_docs(.*) %{DOCUMENT_ROOT}/../error_docs$1 [L]
 #RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
 
+# If the requested filename exists, simply serve it.
+# We only want to let Apache serve files and not directories.
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .? - [L]
+
+#Clustered setup switch
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+#RewriteRule !index_cluster.php - [C]
+#RewriteRule ^var/([^/]+/)?(storage/images(-versioned)?|cache/public)/.* index_cluster.php
+
+###
+# Filter invalid requests
+###
+
 # Rewrite URLs with index.php/*
 #RewriteRule ^index.php/(.*)$ http://%{HTTP_HOST}/$1 [L,R=302]
-
-
-#eZ Publish POP up debug enable if needed
-#RewriteRule ^(var/cache|var/[^/]+/)cache/debug.html.* - [L]
 
 # Platform for Privacy Preferences Project ( P3P ) related files for Internet Explorer
 # More info here : http://en.wikipedia.org/wiki/P3p
@@ -187,11 +194,11 @@ RewriteRule ^robots\.txt - [L]
 RewriteRule ^crossdomain\.xml - [L]
 RewriteRule ^apple-touch-icon\.png - [L]
 RewriteRule ^bundles/ - [L]
-RewriteRule ^css/.*\.css - [L]
-RewriteRule ^js/.*\.js - [L]
- 
+RewriteRule ^css/ - [L]
+RewriteRule ^js/ - [L]
+RewriteRule ^images/ - [L]
 
-# eZ Publish
+# eZ Publish Version 4.x and 5.x
 Rewriterule ^extension/[^/]+/design/[^/]+/(stylesheets|fonts|images|lib|javascripts?|flash)/.* - [L]
 Rewriterule ^var/([^/]+/)?storage/(images|images-versioned|sitemap)/.* - [L]
 RewriteRule ^var/([^/]+/)?cache/(texttoimage|public)/.* - [L]
@@ -204,6 +211,11 @@ Rewriterule ^var/storage/packages/.* - [L]
 #Forbidden Locations
 RewriteRule ^var/([^/]+/)?storage/secure/.* - [F]
 
+# Sets the HTTP_AUTHORIZATION header removed by apache
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+#Catch all to php
 RewriteRule !index_cluster.php - [C]
 RewriteRule !index.php - [C]
 RewriteRule .* index.php [L]
