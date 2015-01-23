@@ -54,7 +54,8 @@
         "behat/mink-selenium-driver": "*",
         "behat/mink-sahi-driver": "*",
         "behat/mink-selenium2-driver": "*",
-        "ezsystems/behatbundle": "~5.4"
+        "ezsystems/behatbundle": "~5.4",
+        "friendsofsymfony/user-bundle": "2.0.*@dev"
     },
     "scripts": {
         "post-install-cmd": [
