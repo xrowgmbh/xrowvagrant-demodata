@@ -42,8 +42,7 @@
         "symfony/expression-language": "~2.4",
         "sensio/framework-extra-bundle": "~3.0",
         "ezsystems/ezfind-ls": "dev-master",
-        "ezsystems/eztags-ls": "~1.3",
-        "sylius/sylius": "0.12.0"
+        "ezsystems/eztags-ls": "~1.3"
     },
     "require-dev": {
         "behat/behat": "3.0.*",
@@ -54,7 +53,8 @@
         "behat/mink-selenium-driver": "*",
         "behat/mink-sahi-driver": "*",
         "behat/mink-selenium2-driver": "*",
-        "ezsystems/behatbundle": "~5.4"
+        "ezsystems/behatbundle": "~5.4",
+        "sylius/sylius": "0.13.*@dev"
     },
     "scripts": {
         "post-install-cmd": [
