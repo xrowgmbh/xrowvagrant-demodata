@@ -55,7 +55,7 @@ composer update --no-interaction --no-dev
 chmod 755 ezpublish/console
 
 # bugfixing for sylius translation problem
-git clone https://github.com/Sylius/SyliusTranslationBundle.git ./vendor/sylius/sylius/src/Sylius/Bundle/TranslationBundle
+git clone https://github.com/Sylius/SyliusTranslationBundle.git ./vendor/sylius/sylius/translation-bundle
 
 ezpublish/console -n assets:install --symlink --relative web
 ezpublish/console -n ezpublish:legacy:assets_install --symlink --relative web
