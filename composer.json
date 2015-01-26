@@ -53,6 +53,7 @@
         "sylius/attribute-bundle": "0.13.*@dev",
         "sylius/cart": "0.13.*@dev",
         "sylius/cart-bundle": "0.13.*@dev",
+        "sylius/core": "0.13.*@dev",
         "sylius/core-bundle": "0.13.*@dev",
         "sylius/currency": "0.13.*@dev",
         "sylius/currency-bundle": "0.13.*@dev",
