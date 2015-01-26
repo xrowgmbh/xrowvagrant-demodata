@@ -19,6 +19,7 @@ use EzSystems\BehatBundle\EzSystemsBehatBundle;
 use eZ\Bundle\EzPublishCoreBundle\Kernel;
 use EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle;
 use FOS\HttpCacheBundle\FOSHttpCacheBundle;
+use FOS\RestBundle\FOSRestBundle();
 use Liip\ImagineBundle\LiipImagineBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -39,6 +40,32 @@ use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use Oneup\FlysystemBundle\OneupFlysystemBundle;
 use Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle;
+use JMS\SerializerBundle\JMSSerializerBundle;
+use Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle;
+use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Bundle\AttributeBundle\SyliusAttributeBundle;
+use Sylius\Bundle\ProductBundle\SyliusProductBundle;
+use Sylius\Bundle\MoneyBundle\SyliusMoneyBundle;
+use Sylius\Bundle\OrderBundle\SyliusOrderBundle;
+use Sylius\Bundle\CartBundle\SyliusCartBundle;
+use Sylius\Bundle\AddressingBundle\SyliusAddressingBundle;
+use Sylius\Bundle\TaxationBundle\SyliusTaxationBundle;
+use Sylius\Bundle\PromotionBundle\SyliusPromotionBundle;
+use Sylius\Bundle\SettingsBundle\SyliusSettingsBundle;
+use Sylius\Bundle\InstallerBundle\SyliusInstallerBundle;
+use Sylius\Bundle\CurrencyBundle\SyliusCurrencyBundle;
+use Sylius\Bundle\LocaleBundle\SyliusLocaleBundle;
+use Sylius\Bundle\VariationBundle\SyliusVariationBundle;
+use Sylius\Bundle\ShippingBundle\SyliusShippingBundle;
+use Sylius\Bundle\PaymentBundle\SyliusPaymentBundle;
+use Sylius\Bundle\PromotionBundle\SyliusPromotionBundle;
+use Sylius\Bundle\TaxonomyBundle\SyliusTaxonomyBundle;
+use Sylius\Bundle\FlowBundle\SyliusFlowBundle;
+use Sylius\Bundle\PricingBundle\SyliusPricingBundle;
+use Sylius\Bundle\ContentBundle\SyliusContentBundle;
+use Sylius\Bundle\CoreBundle\SyliusCoreBundle;
+use Sylius\Bundle\WebBundle\SyliusWebBundle;
+use Sylius\Bundle\ApiBundle\SyliusApiBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -75,7 +102,34 @@ class EzPublishKernel extends Kernel
             new WhiteOctoberBreadcrumbsBundle(),
             new NelmioCorsBundle(),
             new KnpMenuBundle(),
-            new OneupFlysystemBundle()
+            new OneupFlysystemBundle(),
+            new FOSRestBundle(),
+            new JMSSerializerBundle($this),
+            new StofDoctrineExtensionsBundle(),
+            new SyliusAttributeBundle(),
+            new SyliusResourceBundle(),
+            new SyliusProductBundle(),
+            new SyliusMoneyBundle(),
+            new SyliusOrderBundle(),
+            new SyliusCartBundle(),
+            new SyliusAddressingBundle(),
+            new SyliusTaxationBundle(),
+            new SyliusPromotionBundle(),
+            new SyliusSettingsBundle(),
+            new SyliusInstallerBundle(),
+            new SyliusCurrencyBundle(),
+            new SyliusLocaleBundle(),
+            new SyliusVariationBundle(),
+            new SyliusShippingBundle(),
+            new SyliusPaymentBundle(),
+            new SyliusPromotionBundle(),
+            new SyliusTaxonomyBundle(),
+            new SyliusFlowBundle(),
+            new SyliusPricingBundle(),
+            new SyliusContentBundle(),
+            new SyliusCoreBundle(),
+            new SyliusWebBundle(),
+            new SyliusApiBundle(),
         );
         if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/xrow/ezpublish-solrdocs-bundle" ) ) )
         {

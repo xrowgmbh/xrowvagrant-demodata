@@ -20,7 +20,6 @@ echo \$_GET['error'] . " Building try later.";
 exit();
 EOL
 
-COMPOSER_NO_INTERACTION=1
 wget -O ezpublish5.tar.gz --no-check-certificate "http://packages.xrow.com/software/5.4/ezpublish5-5.4.0-ee-bul-full.tar.gz"
 tar --strip-components=1 -xzf ezpublish5.tar.gz
 rm -Rf ezpublish5.tar.gz
@@ -51,7 +50,7 @@ EOL
 rm -f composer.json
 wget --no-check-certificate -O composer.json https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/composer.json
 
-composer update --no-interaction --with-dependencies
+composer update --no-interaction --prefer-source
 
 chmod 755 ezpublish/console
 
@@ -90,6 +89,11 @@ sed -i "s/host: localhost/host: ${DATABASE_SERVER}/g" ezpublish/config/ezpublish
 sed -i "s/user: root/user: ${DATABASE_USER}/g" ezpublish/config/ezpublish.yml
 sed -i "s/password: null/password: ${DATABASE_PASSWORD}/g" ezpublish/config/ezpublish.yml
 sed -i "s/dbname: ezpublish/dbname: ${DATABASE_NAME}/g" ezpublish/config/ezpublish.yml
+
+sed -i "s/sylius.database.host: localhost/sylius.database.host: ${DATABASE_SERVER}/g" ezpublish/config/parameters.yml
+sed -i "s/sylius.database.name: sylius/sylius.database.name: sylius_dev/g" ezpublish/config/parameters.yml
+sed -i "s/sylius.database.user: root/sylius.database.user: ${DATABASE_USER}/g" ezpublish/config/parameters.yml
+sed -i "s/sylius.database.password: null/sylius.database.password: ${DATABASE_PASSWORD}/g" ezpublish/config/parameters.yml
 
 sed -i "s/Server=localhost/Server=${DATABASE_SERVER}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
 sed -i "s/User=root/User=${DATABASE_USER}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
