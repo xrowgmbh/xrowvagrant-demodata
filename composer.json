@@ -54,8 +54,6 @@
         "sylius/cart": "0.13.*@dev",
         "sylius/cart-bundle": "0.13.*@dev",
         "sylius/core-bundle": "0.13.*@dev",
-        "knplabs/knp-gaufrette-bundle": "0.2.*@dev",
-        "friendsofsymfony/user-bundle": "2.0.*@dev",
         "sylius/currency": "0.13.*@dev",
         "sylius/currency-bundle": "0.13.*@dev",
         "sylius/fixtures-bundle": "0.13.*@dev",
@@ -86,7 +84,12 @@
         "sylius/taxonomy-bundle": "0.13.*@dev",
         "sylius/variation": "0.13.*@dev",
         "sylius/variation-bundle": "0.13.*@dev",
-        "sylius/web-bundle": "0.13.*@dev"
+        "sylius/sequence": "0.13.*@dev",
+        "sylius/web-bundle": "0.13.*@dev",
+        "knplabs/knp-gaufrette-bundle": "0.2.*@dev",
+        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "friendsofsymfony/rest-bundle": "1.5.*@dev",
+        "knplabs/gaufrette": "0.2.*@dev"
     },
     "require-dev": {
         "behat/behat": "3.0.*",
