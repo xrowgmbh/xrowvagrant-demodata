@@ -20,6 +20,7 @@ echo \$_GET['error'] . " Building try later.";
 exit();
 EOL
 
+COMPOSER_NO_INTERACTION=1
 wget -O ezpublish5.tar.gz --no-check-certificate "http://packages.xrow.com/software/5.4/ezpublish5-5.4.0-ee-bul-full.tar.gz"
 tar --strip-components=1 -xzf ezpublish5.tar.gz
 rm -Rf ezpublish5.tar.gz
@@ -50,7 +51,7 @@ EOL
 rm -f composer.json
 wget --no-check-certificate -O composer.json https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/composer.json
 
-composer update --no-interaction
+composer -n update
 
 chmod 755 ezpublish/console
 
