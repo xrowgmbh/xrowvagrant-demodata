@@ -20,6 +20,7 @@ use eZ\Bundle\EzPublishCoreBundle\Kernel;
 use EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle;
 use FOS\HttpCacheBundle\FOSHttpCacheBundle;
 use FOS\RestBundle\FOSRestBundle;
+use FOS\OAuthServerBundle\FOSOAuthServerBundle;
 use Liip\ImagineBundle\LiipImagineBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -90,6 +91,8 @@ class EzPublishKernel extends Kernel
             new HautelookTemplatedUriBundle(),
             new LiipImagineBundle(),
             new FOSHttpCacheBundle(),
+            new FOSRestBundle(),
+            new FOSOAuthServerBundle(),
             new EzPublishCoreBundle(),
             new EzPublishLegacyBundle( $this ),
             new EzPublishIOBundle(),
@@ -102,7 +105,6 @@ class EzPublishKernel extends Kernel
             new NelmioCorsBundle(),
             new KnpMenuBundle(),
             new OneupFlysystemBundle(),
-            new FOSRestBundle(),
             new JMSSerializerBundle( $this ),
             new StofDoctrineExtensionsBundle(),
             new SyliusAttributeBundle(),
