@@ -9,6 +9,7 @@
             "homepage": "https://github.com/ezsystems/ezpublish-community/contributors"
         }
     ],
+    "minimum-stability": "dev",
     "repositories": [
         { "type": "composer", "url": "https://updates.ez.no/bul" },
         { "type": "git", "url": "https://github.com/Sylius/SyliusTranslationBundle.git"
@@ -92,7 +93,7 @@
         "sylius/taxation-bundle": "0.13.*@dev",
         "sylius/taxonomy": "0.13.*@dev",
         "sylius/taxonomy-bundle": "0.13.*@dev",
-        "sylius/translation-bundle": "0.13.*@dev",
+        "sylius/translation-bundle": "dev-master",
         "sylius/variation": "0.13.*@dev",
         "sylius/variation-bundle": "0.13.*@dev",
         "sylius/web-bundle": "0.13.*@dev",
