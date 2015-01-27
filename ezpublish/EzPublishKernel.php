@@ -66,7 +66,6 @@ use Sylius\Bundle\CoreBundle\SyliusCoreBundle;
 use Sylius\Bundle\WebBundle\SyliusWebBundle;
 use Sylius\Bundle\ApiBundle\SyliusApiBundle;
 use Sylius\Bundle\TranslationBundle\SyliusTranslationBundle;
-use Sylius\Bundle\TranslationBundle\AbstractTranslationBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -105,7 +104,7 @@ class EzPublishKernel extends Kernel
             new KnpMenuBundle(),
             new OneupFlysystemBundle(),
             new FOSRestBundle(),
-            new JMSSerializerBundle($this),
+            new JMSSerializerBundle( $this ),
             new StofDoctrineExtensionsBundle(),
             new SyliusAttributeBundle(),
             new SyliusResourceBundle(),
@@ -131,8 +130,7 @@ class EzPublishKernel extends Kernel
             new SyliusCoreBundle(),
             new SyliusWebBundle(),
             new SyliusApiBundle(),
-            new SyliusTranslationBundle(),
-            new AbstractTranslationBundle()
+            new SyliusTranslationBundle()
         );
         if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/xrow/ezpublish-solrdocs-bundle" ) ) )
         {
