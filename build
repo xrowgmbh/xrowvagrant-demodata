@@ -50,7 +50,7 @@ EOL
 rm -f composer.json
 wget --no-check-certificate -O composer.json https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/composer.json
 
-composer update --no-interaction --no-dev
+composer install --prefer-source --no-interaction
 
 chmod 755 ezpublish/console
 
