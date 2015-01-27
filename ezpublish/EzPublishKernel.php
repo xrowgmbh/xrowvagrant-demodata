@@ -106,6 +106,7 @@ class EzPublishKernel extends Kernel
             new JMSSerializerBundle( $this ),
             new StofDoctrineExtensionsBundle(),
             new SyliusAttributeBundle(),
+            new SyliusApiBundle(),
             new SyliusResourceBundle(),
             new SyliusProductBundle(),
             new SyliusMoneyBundle(),
@@ -113,7 +114,6 @@ class EzPublishKernel extends Kernel
             new SyliusCartBundle(),
             new SyliusAddressingBundle(),
             new SyliusTaxationBundle(),
-            new SyliusPromotionBundle(),
             new SyliusSettingsBundle(),
             new SyliusInstallerBundle(),
             new SyliusCurrencyBundle(),
@@ -127,8 +127,7 @@ class EzPublishKernel extends Kernel
             new SyliusPricingBundle(),
             new SyliusContentBundle(),
             new SyliusCoreBundle(),
-            new SyliusWebBundle(),
-            new SyliusApiBundle()
+            new SyliusWebBundle()
         );
         if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/xrow/ezpublish-solrdocs-bundle" ) ) )
         {
