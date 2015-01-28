@@ -11,7 +11,7 @@ parameters:
     sylius.database.driver: mysqli
     sylius.database.host: localhost
     sylius.database.port: null
-    sylius.database.name: sylius
+    sylius.database.name: sylius_dev
     sylius.database.path: null
     sylius.database.user: root
     sylius.database.password: null
