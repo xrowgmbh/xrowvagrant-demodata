@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: @SyliusCoreBundle/Resources/config/app/main.yml }
+    #- { resource: @SyliusCoreBundle/Resources/config/app/main.yml }
 
 framework:
     esi:             ~
@@ -53,5 +53,9 @@ assetic:
 ez_publish_legacy:
     enabled: true
     root_dir: %kernel.root_dir%/../ezpublish_legacy
+
+# Sylius
+sylius_api:
+    driver: 'doctrine/orm'
 
 parameters:
