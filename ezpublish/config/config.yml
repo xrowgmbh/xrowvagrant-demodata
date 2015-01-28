@@ -61,7 +61,34 @@ sylius_api:
 sylius_product:
     driver: 'doctrine/orm'
 
+sylius_resource:
+    driver: 'doctrine/orm'
+
+sylius_attribute:
+    driver: 'doctrine/orm'
+
+sylius_money:
+    driver: 'doctrine/orm'
+
 sylius_order:
+    driver: 'doctrine/orm'
+
+sylius_cart:
+    driver: 'doctrine/orm'
+
+sylius_addressing:
+    driver: 'doctrine/orm'
+
+sylius_taxation:
+    driver: 'doctrine/orm'
+
+sylius_promotion:
+    driver: 'doctrine/orm'
+
+sylius_settings:
+    driver: 'doctrine/orm'
+
+sylius_installer:
     driver: 'doctrine/orm'
 
 sylius_currency:
@@ -70,19 +97,7 @@ sylius_currency:
 sylius_locale:
     driver: 'doctrine/orm'
 
-sylius_settings:
-    driver: 'doctrine/orm'
-
-sylius_archetype:
-    driver: 'doctrine/orm'
-
 sylius_variation:
-    driver: 'doctrine/orm'
-
-sylius_attribute:
-    driver: 'doctrine/orm'
-
-sylius_taxation:
     driver: 'doctrine/orm'
 
 sylius_shipping:
@@ -91,28 +106,22 @@ sylius_shipping:
 sylius_payment:
     driver: 'doctrine/orm'
 
-sylius_payum:
-    driver: 'doctrine/orm'
-
-sylius_promotion:
-    driver: 'doctrine/orm'
-
-sylius_addressing:
-    driver: 'doctrine/orm'
-
-sylius_inventory:
-    driver: 'doctrine/orm'
-
 sylius_taxonomy:
     driver: 'doctrine/orm'
 
-sylius_sequence:
+sylius_flow:
     driver: 'doctrine/orm'
 
-sylius_sequence:
+sylius_pricing:
+    driver: 'doctrine/orm'
+
+sylius_content:
     driver: 'doctrine/orm'
 
 sylius_core:
+    driver: 'doctrine/orm'
+
+sylius_web:
     driver: 'doctrine/orm'
 
 parameters:
