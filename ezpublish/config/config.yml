@@ -119,7 +119,28 @@ sylius_content:
     driver: 'doctrine/orm'
 
 sylius_core:
-    driver: 'doctrine/orm'
+    driver: doctrine/orm
+    emails:
+        enabled: false
+    routing:
+        %sylius.model.product.class%:
+            field: slug
+            prefix: /p
+            defaults:
+                controller: sylius.controller.product:showAction
+                repository: sylius.repository.product
+                sylius:
+                    template: SyliusWebBundle:Frontend/Product:show.html.twig
+                    criteria: {slug: $slug}
+        %sylius.model.taxon.class%:
+            field: permalink
+            prefix: /t
+            defaults:
+                controller: sylius.controller.product:indexByTaxonAction
+                repository: sylius.repository.taxon
+                sylius:
+                    template: SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig
+
 
 sylius_web:
     driver: 'doctrine/orm'
