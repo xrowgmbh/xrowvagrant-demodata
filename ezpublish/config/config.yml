@@ -67,9 +67,6 @@ sylius_order:
 sylius_currency:
     driver: 'doctrine/orm'
 
-sylius_contact:
-    driver: 'doctrine/orm'
-
 sylius_locale:
     driver: 'doctrine/orm'
 
