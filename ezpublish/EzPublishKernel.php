@@ -125,7 +125,6 @@ class EzPublishKernel extends Kernel
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\ElasticaBundle\FOSElasticaBundle(),
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Payum\Bundle\PayumBundle\PayumBundle(),
