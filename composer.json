@@ -100,7 +100,8 @@
         "knplabs/knp-gaufrette-bundle": "0.2.*@dev",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "friendsofsymfony/rest-bundle": "1.5.*@dev",
-        "knplabs/gaufrette": "0.2.*@dev"
+        "knplabs/gaufrette": "0.2.*@dev",
+        "willdurand/hateoas-bundle": "1.0.*@dev"
     },
     "require-dev": {
         "behat/behat": "3.0.*",
