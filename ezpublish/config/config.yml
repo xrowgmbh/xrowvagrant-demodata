@@ -161,6 +161,15 @@ sylius_promotion:
             model: Sylius\Component\Core\Model\Coupon
             form: Sylius\Bundle\CoreBundle\Form\Type\CouponType
 
+sylius_inventory:
+    backorders: %sylius.inventory.backorders_enabled%
+    track_inventory: %sylius.inventory.tracking_enabled%
+    classes:
+        inventory_unit:
+            model: Sylius\Component\Core\Model\InventoryUnit
+        stockable:
+            model: %sylius.model.product_variant.class%
+
 sylius_settings:
     driver: 'doctrine/orm'
 
