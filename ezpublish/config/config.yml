@@ -232,9 +232,6 @@ sylius_taxonomy:
         taxon_translation:
             model: Sylius\Component\Core\Model\TaxonTranslation
 
-#sylius_flow:
-#    driver: 'doctrine/orm'
-
 sylius_pricing:
     forms:
         - sylius_product_variant
@@ -245,7 +242,9 @@ sylius_content:
         static_content:
             repository: Sylius\Bundle\ContentBundle\Doctrine\ODM\PHPCR\StaticContentRepository
 
-#sylius_web:
-#    driver: 'doctrine/orm'
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.block.service.text: ~
 
 parameters:
