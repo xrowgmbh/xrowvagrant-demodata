@@ -12,7 +12,7 @@
     "repositories": [
         { "type": "composer", "url": "https://updates.ez.no/bul" },
         { "type": "git", "url": "https://github.com/Sylius/SyliusTranslationBundle.git" },
-        { "type": "git", "url": "https://github.com/Sylius/Translation.git" }
+        { "type": "git", "url": "https://github.com/Sylius/Translation.git" },
         { "type": "git", "url": "https://github.com/Sylius/SyliusArchetypeBundle.git" }
     ],
     "autoload": {
