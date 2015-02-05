@@ -103,6 +103,8 @@ class EzPublishKernel extends Kernel
             new Sylius\Bundle\PricingBundle\SyliusPricingBundle(),
             new Sylius\Bundle\SequenceBundle\SyliusSequenceBundle(),
             new Sylius\Bundle\ContentBundle\SyliusContentBundle(),
+            new Sylius\Bundle\TranslationBundle\SyliusTranslationBundle(),
+            new Sylius\Bundle\ArchetypeBundle\SyliusArchetypeBundle(),
 
             new Sylius\Bundle\CoreBundle\SyliusCoreBundle(),
             new Sylius\Bundle\WebBundle\SyliusWebBundle(),
