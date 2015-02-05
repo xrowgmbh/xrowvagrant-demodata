@@ -53,6 +53,7 @@
         "sylius/api-bundle": "0.13.*@dev",
         "sylius/attribute": "0.13.*@dev",
         "sylius/attribute-bundle": "0.13.*@dev",
+        "sylius/archetype": "0.13.*@dev",
         "sylius/cart": "0.13.*@dev",
         "sylius/cart-bundle": "0.13.*@dev",
         "sylius/contact": "0.13.*@dev",
