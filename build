@@ -52,7 +52,7 @@ rm -f composer.json
 wget --no-check-certificate -O composer.json https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/composer.json
 
 rm -f behat.yml
-wget --no-check-certificate -O composer.json https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/behat.yml
+wget --no-check-certificate -O behat.yml https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/behat.yml
 
 composer -n update
 
