@@ -100,6 +100,7 @@
         "sylius/variation": "0.13.*@dev",
         "sylius/variation-bundle": "0.13.*@dev",
         "sylius/web-bundle": "0.13.*@dev",
+        "prezent/doctrine-translatable": "1.0.*@dev",
         "knplabs/knp-gaufrette-bundle": "0.2.*@dev",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "friendsofsymfony/rest-bundle": "1.5.*@dev",
