@@ -121,7 +121,7 @@
         "doctrine/phpcr-odm": "^1.2.2",
         "jackalope/jackalope": "^1.1.4",
         "jackalope/jackalope-doctrine-dbal": "^1.1.2",
-        "jms/translation-bundle": "~1.1"
+        "jms/translation-bundle": "~1.1",
         "payum/payum": "0.12.*",
         "payum/payum-bundle": "0.12.*",
         "sensio/distribution-bundle": "~2.3",
@@ -149,7 +149,7 @@
         "doctrine/common": "~2.3",
         "doctrine/migrations": "~1.0@dev",
         "friendsofsymfony/oauth-server-bundle": "~1.4",
-        "omnipay/omnipay": "~2.3",
+        "omnipay/omnipay": "~2.3"
     },
     "require-dev": {
         "behat/behat": "3.0.*",
