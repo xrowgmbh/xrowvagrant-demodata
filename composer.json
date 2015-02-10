@@ -113,7 +113,6 @@
         "knplabs/knp-gaufrette-bundle": "0.2.*@dev",
         "knplabs/gaufrette": "0.2.*@dev",
         "knplabs/knp-menu-bundle": "~1.1",
-        "knplabs/knp-gaufrette-bundle": "~0.1",
         "knplabs/knp-snappy-bundle": "~1.2",
         "willdurand/hateoas-bundle": "~0.4",
         "stof/doctrine-extensions-bundle": "~1.1",
