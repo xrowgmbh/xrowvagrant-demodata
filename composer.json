@@ -110,7 +110,7 @@
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "friendsofsymfony/rest-bundle": "1.5.*@dev",
         "friendsofsymfony/elastica-bundle": "^3.0.2",
-        "knplabs/knp-gaufrette-bundle": "~0.1",
+        "knplabs/knp-gaufrette-bundle": "0.2.*@dev",
         "knplabs/knp-menu-bundle": "~1.1",
         "knplabs/knp-snappy-bundle": "~1.2",
         "knplabs/gaufrette": "0.2.*@dev",
