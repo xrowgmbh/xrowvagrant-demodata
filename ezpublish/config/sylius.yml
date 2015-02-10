@@ -128,9 +128,6 @@ sylius_currency:
 sylius_locale:
     driver: 'doctrine/orm'
 
-sylius_translation:
-    driver: 'doctrine/orm'
-
 sylius_variation:
     classes:
         product:
