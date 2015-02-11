@@ -1,13 +1,6 @@
-# Sylius
-sylius_api:
-    classes:
-        api_user:
-            model: %sylius.model.user.class%
-
+# @SyliusCoreBundle/Resources/config/app/sylius.yml
 sylius_core:
     driver: doctrine/orm
-    emails:
-        enabled: false
     routing:
         %sylius.model.product.class%:
             field: slug
@@ -27,52 +20,20 @@ sylius_core:
                 sylius:
                     template: SyliusWebBundle:Frontend/Product:indexByTaxon.html.twig
 
-sylius_product:
-    driver: doctrine/orm
-    classes:
-        product:
-            model: Sylius\Component\Core\Model\Product
-            controller: Sylius\Bundle\CoreBundle\Controller\ProductController
-            repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository
-            form:
-                default: Sylius\Bundle\CoreBundle\Form\Type\ProductType
-
-sylius_resource:
-    resources:
-        sylius.user:
-            driver: doctrine/orm
-            classes:
-                model: Sylius\Component\Core\Model\User
-                controller: Sylius\Bundle\CoreBundle\Controller\UserController
-                repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\UserRepository
-        sylius.user_oauth:
-            driver: doctrine/orm
-            classes:
-                model: Sylius\Component\Core\Model\UserOAuth
-        sylius.group:
-            driver: doctrine/orm
-            classes:
-                model: Sylius\Component\Core\Model\Group
-                repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\GroupRepository
-
-sylius_attribute:
-    driver: 'doctrine/orm'
-
 sylius_money:
     currency: %sylius.currency%
     locale: %sylius.locale%
 
-sylius_order:
-    guest_order: %sylius.order.allow_guest_order%
+sylius_locale: ~
+
+sylius_currency: ~
+
+sylius_contact: ~
+
+sylius_api:
     classes:
-        order:
-            model: Sylius\Component\Core\Model\Order
-            controller: Sylius\Bundle\CoreBundle\Controller\OrderController
-            repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\OrderRepository
-            form: Sylius\Bundle\CoreBundle\Form\Type\OrderType
-        order_item:
-            model: Sylius\Component\Core\Model\OrderItem
-            form: Sylius\Bundle\CoreBundle\Form\Type\OrderItemType
+        api_user:
+            model: %sylius.model.user.class%
 
 sylius_cart:
     resolver: sylius.cart_item_resolver.default
@@ -82,20 +43,89 @@ sylius_cart:
         cart:
             form: Sylius\Bundle\CoreBundle\Form\Type\CartType
 
-sylius_addressing:
-    scopes:
-        shipping: shipping
-        content: content
-        price: price
+sylius_settings: ~
+
+sylius_content:
+    driver: doctrine/phpcr-odm
     classes:
-        address:
-            model: Sylius\Component\Core\Model\Address
+        static_content:
+            repository: Sylius\Bundle\ContentBundle\Doctrine\ODM\PHPCR\StaticContentRepository
+
+sylius_taxonomy:
+    classes:
+        taxonomy:
+            model: Sylius\Component\Core\Model\Taxonomy
+            repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\TranslatableEntityRepository
+            form: Sylius\Bundle\CoreBundle\Form\Type\TaxonomyType
+            translatable:
+                targetEntity: Sylius\Component\Taxonomy\Model\TaxonomyTranslation
+        taxonomy_translation: ~
+        taxon:
+            model: Sylius\Component\Core\Model\Taxon
+            form: Sylius\Bundle\CoreBundle\Form\Type\TaxonType
+            translatable:
+                targetEntity: Sylius\Component\Taxonomy\Model\TaxonTranslation
+        taxon_translation: ~
+
+sylius_product:
+    driver: doctrine/orm
+    classes:
+        product:
+            model: Sylius\Component\Core\Model\Product
+            controller: Sylius\Bundle\CoreBundle\Controller\ProductController
+            repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository
+            form:
+                default: Sylius\Bundle\CoreBundle\Form\Type\ProductType
+            translatable:
+                targetEntity: Sylius\Component\Core\Model\ProductTranslation
+        product_translation:
+            model: Sylius\Component\Core\Model\ProductTranslation
+
+
+sylius_archetype:
+    classes:
+        product:
+            subject: Sylius\Component\Core\Model\Product
+            attribute: Sylius\Component\Product\Model\Attribute
+            option: Sylius\Component\Product\Model\Option
+            archetype:
+                model: Sylius\Component\Product\Model\Archetype
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\TranslatableEntityRepository
+                translatable:
+                    targetEntity: Sylius\Component\Product\Model\ArchetypeTranslation
+            archetype_translation:
+                model: Sylius\Component\Product\Model\ArchetypeTranslation
+
+sylius_attribute: ~
+
+sylius_variation:
+    classes:
+        product:
+            variant:
+                model: Sylius\Component\Core\Model\ProductVariant
+                repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductVariantRepository
+                form: Sylius\Bundle\CoreBundle\Form\Type\ProductVariantType
 
 sylius_taxation:
     classes:
         tax_rate:
             model: Sylius\Component\Core\Model\TaxRate
             form: Sylius\Bundle\CoreBundle\Form\Type\TaxRateType
+
+sylius_shipping:
+    classes:
+        shipment:
+            model: Sylius\Component\Core\Model\Shipment
+            repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\ShipmentRepository
+        shipment_item:
+            model: Sylius\Component\Core\Model\InventoryUnit
+        shipping_method:
+            model: Sylius\Component\Core\Model\ShippingMethod
+            repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\TranslatableEntityRepository
+            form: Sylius\Bundle\CoreBundle\Form\Type\ShippingMethodType
+            translatable:
+                targetEntity: Sylius\Component\Shipping\Model\ShippingMethodTranslation
+        shipping_method_translation: ~
 
 sylius_promotion:
     classes:
@@ -114,42 +144,6 @@ sylius_inventory:
         stockable:
             model: %sylius.model.product_variant.class%
 
-sylius_settings:
-    driver: 'doctrine/orm'
-
-sylius_installer:
-    classes:
-        user:
-            model: Sylius\Component\Core\Model\User
-
-sylius_currency:
-    driver: 'doctrine/orm'
-
-sylius_locale:
-    driver: 'doctrine/orm'
-
-sylius_variation:
-    classes:
-        product:
-            variant:
-                model: Sylius\Component\Core\Model\ProductVariant
-                repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductVariantRepository
-                form: Sylius\Bundle\CoreBundle\Form\Type\ProductVariantType
-
-sylius_shipping:
-    classes:
-        shipment:
-            model: Sylius\Component\Core\Model\Shipment
-            repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\ShipmentRepository
-        shipment_item:
-            model: Sylius\Component\Core\Model\InventoryUnit
-        shipping_method:
-            model: Sylius\Component\Core\Model\ShippingMethod
-            repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\TranslatableEntityRepository
-            form: Sylius\Bundle\CoreBundle\Form\Type\ShippingMethodType
-        shipping_method_translation:
-            model: Sylius\Component\Core\Model\ShippingMethodTranslation
-
 sylius_payment:
     classes:
         payment:
@@ -162,30 +156,117 @@ sylius_payment:
         stripe_checkout: Stripe Checkout
         paypal_express_checkout: Paypal Express Checkout
 
-sylius_taxonomy:
+sylius_payum: ~
+
+sylius_addressing:
+    scopes:
+        shipping: shipping
+        content: content
+        price: price
     classes:
-        taxonomy:
-            model: Sylius\Component\Core\Model\Taxonomy
-            repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\TranslatableEntityRepository
-            form: Sylius\Bundle\CoreBundle\Form\Type\TaxonomyType
-        taxonomy_translation:
-            model: Sylius\Component\Core\Model\TaxonomyTranslation
-        taxon:
-            model: Sylius\Component\Core\Model\Taxon
-            form: Sylius\Bundle\CoreBundle\Form\Type\TaxonType
-        taxon_translation:
-            model: Sylius\Component\Core\Model\TaxonTranslation
+        address:
+            model: Sylius\Component\Core\Model\Address
+
+sylius_order:
+    guest_order: %sylius.order.allow_guest_order%
+    classes:
+        order:
+            model: Sylius\Component\Core\Model\Order
+            controller: Sylius\Bundle\CoreBundle\Controller\OrderController
+            repository: Sylius\Bundle\CoreBundle\Doctrine\ORM\OrderRepository
+            form: Sylius\Bundle\CoreBundle\Form\Type\OrderType
+        order_item:
+            model: Sylius\Component\Core\Model\OrderItem
+            form: Sylius\Bundle\CoreBundle\Form\Type\OrderItemType
+
+sylius_sequence:
+    generators:
+        %sylius.model.order.class%: sylius.sequence.sequential_number_generator
 
 sylius_pricing:
     forms:
         - sylius_product_variant
 
-sylius_content:
-    driver: doctrine/phpcr-odm
+sylius_search:
+    search_form_template: 'SyliusSearchBundle::search_form.html.twig'
+    engine: orm
     classes:
-        static_content:
-            repository: Sylius\Bundle\ContentBundle\Doctrine\ODM\PHPCR\StaticContentRepository
+       search:
+          model: Sylius\Bundle\SearchBundle\Model\SearchIndex
+       log:
+          model: Sylius\Bundle\SearchBundle\Model\SearchLog
+    orm_indexes:
+        product:
+            class: %sylius.model.product.class%
+            mappings:
+                id: ~
+                name: ~
+                description: ~
 
+    custom_accessors:
+        - Sylius\Component\Product\Accessor\ProductAccessor
+    filters:
+        pre_search_filter:
+            enabled: true
+            taxonomy: category
+        facet_groups:
+            search_set:
+                values: [taxons, price, made_of, color]
+            categories_set:
+                values: [price, made_of, color]
+            all_set:
+                values: [taxons, price, made_of]
+        facets:
+            taxons:
+                display_name: 'Basic categories'
+                type: terms
+                value: ~
+            price:
+                display_name: 'Available prices'
+                type: range
+                values:
+                    - { from: 0, to: 2000}
+                    - { from: 2001, to: 5000}
+                    - { from: 5001, to: 10000}
+            made_of:
+                display_name: 'Material'
+                type: terms
+                value: ~
+            color:
+                display_name: 'Available colors'
+                type: terms
+                value: ~
+
+sylius_translation:
+    default_mapping:
+        translatable:
+            field: translations
+            currentLocale: currentLocale
+            fallbackLocale: fallbackLocale
+        translation:
+            field: translatable
+            locale: locale
+
+sylius_mailer:
+    templates:
+        sylius.email.order_confirmation.name: SyliusWebBundle:Email:orderConfirmation.html.twig
+        sylius.email.order_comment.name: SyliusWebBundle:Email:orderComment.html.twig
+        sylius.email.user_confirmation.name: SyliusWebBundle:Email:userConfirmation.html.twig
+    sender:
+        name: Example.com
+        address: no-reply@example.com
+    emails:
+        order_confirmation:
+            subject: sylius.email.order_confirmation.subject
+            template: SyliusWebBundle:Email:orderConfirmation.html.twig
+        order_comment:
+            subject: sylius.email.order_comment.subject
+            template: SyliusWebBundle:Email:orderComment.html.twig
+        user_confirmation:
+            subject: sylius.email.user_confirmation.subject
+            template: SyliusWebBundle:Email:userConfirmation.html.twig
+
+# @SyliusCoreBundle/Resources/config/app/main.yml
 twig:
     exception_controller: 'FOS\RestBundle\Controller\ExceptionController::showAction'
 
@@ -297,18 +378,134 @@ jms_serializer:
             sylius-addressing:
                 namespace_prefix: "Sylius\\Component\\Addressing"
                 path: "@SyliusAddressingBundle/Resources/config/serializer"
+            sylius-attribute:
+                namespace_prefix: "Sylius\\Component\\Attribute"
+                path: "@SyliusAttributeBundle/Resources/config/serializer"
+            sylius-contact:
+                namespace_prefix: "Sylius\\Component\\Contact"
+                path: "@SyliusContactBundle/Resources/config/serializer"
             sylius-core:
                 namespace_prefix: "Sylius\\Component\\Core"
                 path: "@SyliusCoreBundle/Resources/config/serializer"
+            sylius-currency:
+                namespace_prefix: "Sylius\\Component\\Currency"
+                path: "@SyliusCurrencyBundle/Resources/config/serializer"
             sylius-inventory:
                 namespace_prefix: "Sylius\\Component\\Inventory"
                 path: "@SyliusInventoryBundle/Resources/config/serializer"
+            sylius-locale:
+                namespace_prefix: "Sylius\\Component\\Locale"
+                path: "@SyliusLocaleBundle/Resources/config/serializer"
+            sylius-order:
+                namespace_prefix: "Sylius\\Component\\Order"
+                path: "@SyliusOrderBundle/Resources/config/serializer"
+            sylius-payment:
+                namespace_prefix: "Sylius\\Component\\Payment"
+                path: "@SyliusPaymentBundle/Resources/config/serializer"
             sylius-product:
                 namespace_prefix: "Sylius\\Component\\Product"
                 path: "@SyliusProductBundle/Resources/config/serializer"
+            sylius-promotion:
+                namespace_prefix: "Sylius\\Component\\Promotion"
+                path: "@SyliusPromotionBundle/Resources/config/serializer"
             sylius-shipping:
                 namespace_prefix: "Sylius\\Component\\Shipping"
                 path: "@SyliusShippingBundle/Resources/config/serializer"
             sylius-taxation:
                 namespace_prefix: "Sylius\\Component\\Taxation"
                 path: "@SyliusTaxationBundle/Resources/config/serializer"
+            sylius-taxonomy:
+                namespace_prefix: "Sylius\\Component\\Taxonomy"
+                path: "@SyliusTaxonomyBundle/Resources/config/serializer"
+            sylius-variation:
+                namespace_prefix: "Sylius\\Component\\Variation"
+                path: "@SyliusVariationBundle/Resources/config/serializer"
+
+a2lix_translation_form:
+    locale_provider: sylius.locale_provider
+    manager_registry: doctrine
+    templating: "A2lixTranslationFormBundle::default.html.twig"
+
+
+# @SyliusCoreBundle/Resources/config/app/cmf.yml
+cmf_core:
+    publish_workflow: false
+
+cmf_block:
+    persistence:
+        phpcr:
+            block_basepath: /cms/blocks
+
+cmf_content:
+    persistence:
+        phpcr:
+            content_basepath: /cms/pages
+    default_template: SyliusWebBundle:Frontend/StaticContent:show.html.twig
+
+cmf_menu:
+    persistence:
+        phpcr:
+            menu_basepath: /cms/menus
+
+cmf_media:
+    persistence:
+        phpcr:
+            media_basepath: /cms/medias
+            
+cmf_routing:
+    chain:
+        routers_by_id:
+            router.default: 100
+            sylius.dynamic_router: 50
+            cmf_routing.dynamic_router: 20
+    dynamic:
+        generic_controller: cmf_content.controller:indexAction
+        persistence:
+            phpcr:
+                enabled: true
+                route_basepath: /cms/routes
+
+doctrine_cache:
+    providers:
+        phpcr_meta: %sylius.cache%
+        phpcr_nodes: %sylius.cache%
+
+cmf_create:
+    security:
+      role: ROLE_SYLIUS_ADMIN
+    persistence:
+        phpcr:
+            image: false
+
+liip_imagine:
+    filter_sets:
+        slideshow_default:
+            data_loader: cmf_media_doctrine_phpcr
+            format: jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [850, 300], mode: inset }
+        slideshow_small:
+            data_loader: cmf_media_doctrine_phpcr
+            format: jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [260, 200], mode: inset }
+        slideshow_medium:
+            data_loader: cmf_media_doctrine_phpcr
+            format: jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [850, 300], mode: inset }
+        slideshow_large:
+            data_loader: cmf_media_doctrine_phpcr
+            format: jpg
+            quality: 90
+            filters:
+                thumbnail: { size: [1170, 380], mode: inset }
+        image_upload_thumbnail:
+            quality: 85
+            format: jpg
+            data_loader: cmf_media_doctrine_phpcr
+            filters:
+                thumbnail: { size: [300, 150], mode: inset }
