@@ -20,7 +20,7 @@
     },
     "require": {
         "php": ">=5.3.17",
-        "symfony/symfony": "~2.5.6",
+        "symfony/symfony": "~2.3",
         "twig/extensions": "~1.0",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
@@ -52,12 +52,18 @@
         "behat/behat": "3.0.*",
         "behat/symfony2-extension": "2.0.*",
         "behat/sahi-client": "dev-master as 1.1.1",
-        "behat/mink-extension": "*",
-        "behat/mink-goutte-driver": "*",
-        "behat/mink-selenium-driver": "*",
-        "behat/mink-sahi-driver": "*",
-        "behat/mink-selenium2-driver": "*",
-        "ezsystems/behatbundle": "~5.4"
+        "behat/mink-goutte-driver": "1.1.*",
+        "behat/mink-selenium-driver": "1.2.*@dev",
+        "behat/mink-sahi-driver": "1.2.*@dev",
+        "ezsystems/behatbundle": "~5.4",
+
+        "behat/mink-extension": "~2.0",
+        "behat/mink-browserkit-driver": "~1.2",
+        "behat/mink-selenium2-driver": "~1.2",
+        "behat/mink": "1.7.*@dev",
+        "coduo/php-matcher": "~1.0",
+        "phpspec/phpspec": "~2.1",
+        "phpunit/phpunit": "~4.1"
     },
     "scripts": {
         "post-install-cmd": [
