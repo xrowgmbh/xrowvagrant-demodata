@@ -8,13 +8,6 @@ parameters:
     mailer_user: 
     mailer_password:
 
-    sylius.database.driver: mysqli
-    sylius.database.host: localhost
-    sylius.database.port: null
-    sylius.database.name: sylius_dev
-    sylius.database.path: null
-    sylius.database.user: root
-    sylius.database.password: null
     sylius.mailer.transport: smtp
     sylius.mailer.host: 127.0.0.1
     sylius.mailer.port: null
@@ -49,12 +42,12 @@ parameters:
     sylius.order.allow_guest_order: false
     sylius.order.pending.duration: '3 hours'
     sylius.uploader.filesystem: sylius_image
-    phpcr_backend:
+    sylius.phpcr.backend:
         type: doctrinedbal
         connection: default
         caches:
             meta: doctrine_cache.providers.phpcr_meta
             nodes: doctrine_cache.providers.phpcr_nodes
-    phpcr_workspace: default
-    phpcr_user: admin
-    phpcr_pass: admin
+    sylius.phpcr.workspace: default
+    sylius.phpcr.user: admin
+    sylius.phpcr.pass: admin

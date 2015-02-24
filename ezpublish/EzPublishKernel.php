@@ -8,39 +8,13 @@
  */
 
 use Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle;
-use eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle;
 use eZ\Bundle\EzPublishDebugBundle\EzPublishDebugBundle;
-use eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle;
-use eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle;
-use eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle;
-use EzSystems\CommentsBundle\EzSystemsCommentsBundle;
-use EzSystems\DemoBundle\EzSystemsDemoBundle;
 use EzSystems\BehatBundle\EzSystemsBehatBundle;
 use eZ\Bundle\EzPublishCoreBundle\Kernel;
-use EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle;
-use FOS\HttpCacheBundle\FOSHttpCacheBundle;
-use FOS\RestBundle\FOSRestBundle;
-use FOS\OAuthServerBundle\FOSOAuthServerBundle;
-use Liip\ImagineBundle\LiipImagineBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
-use Symfony\Bundle\SecurityBundle\SecurityBundle;
-use Symfony\Bundle\TwigBundle\TwigBundle;
-use Symfony\Bundle\MonologBundle\MonologBundle;
-use Symfony\Bundle\AsseticBundle\AsseticBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
-use Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle;
 use Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle;
 use Sensio\Bundle\DistributionBundle\SensioDistributionBundle;
-use Tedivm\StashBundle\TedivmStashBundle;
-use WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle;
-use WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle;
-use Nelmio\CorsBundle\NelmioCorsBundle;
-use Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle;
-use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
-use Knp\Bundle\MenuBundle\KnpMenuBundle;
-use Oneup\FlysystemBundle\OneupFlysystemBundle;
-use Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle;
 
 class EzPublishKernel extends Kernel
 {
@@ -54,32 +28,6 @@ class EzPublishKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
-            new FrameworkBundle(),
-            new SecurityBundle(),
-            new TwigBundle(),
-            new MonologBundle(),
-            new SwiftmailerBundle(),
-            new AsseticBundle(),
-            new DoctrineBundle(),
-            new SensioFrameworkExtraBundle(),
-            new TedivmStashBundle(),
-            new HautelookTemplatedUriBundle(),
-            new LiipImagineBundle(),
-            new FOSHttpCacheBundle(),
-            new FOSRestBundle(),
-            new FOSOAuthServerBundle(),
-            new EzPublishCoreBundle(),
-            new EzPublishLegacyBundle( $this ),
-            new EzPublishIOBundle(),
-            new EzSystemsDemoBundle(),
-            new EzPublishRestBundle(),
-            new EzSystemsCommentsBundle(),
-            new EzSystemsNgsymfonytoolsBundle(),
-            new WhiteOctoberPagerfantaBundle(),
-            new WhiteOctoberBreadcrumbsBundle(),
-            new NelmioCorsBundle(),
-            new KnpMenuBundle(),
-            new OneupFlysystemBundle(),
             new Sylius\Bundle\InstallerBundle\SyliusInstallerBundle(),
             new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
             new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
@@ -134,6 +82,32 @@ class EzPublishKernel extends Kernel
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Tedivm\StashBundle\TedivmStashBundle(),
+            new Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new FOS\HttpCacheBundle\FOSHttpCacheBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+            new eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle(),
+            new eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle( $this ),
+            new eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle(),
+            new EzSystems\DemoBundle\EzSystemsDemoBundle(),
+            new eZ\Bundle\EzPublishRestBundle\EzPublishRestBundle(),
+            new EzSystems\CommentsBundle\EzSystemsCommentsBundle(),
+            new EzSystems\NgsymfonytoolsBundle\EzSystemsNgsymfonytoolsBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Oneup\FlysystemBundle\OneupFlysystemBundle(),
         );
         if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/xrow/ezpublish-solrdocs-bundle" ) ) )
         {
