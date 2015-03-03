@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+VERSION="5.4"
 if [ ! -d ./web ]; then
   mkdir ./web
 fi
@@ -18,9 +19,10 @@ exit();
 EOL
 
 COMPOSER_NO_INTERACTION=1
-wget -O ezpublish5.tar.gz --no-check-certificate "http://packages.xrow.com/software/5.4/ezpublish5-5.4.0-ee-bul-full.tar.gz"
-tar --strip-components=1 -xzf ezpublish5.tar.gz
-rm -Rf ezpublish5.tar.gz
+if [ ! -f ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz ]; then
+    wget -O ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz --no-check-certificate "http://packages.xrow.com/software/5.4/ezpublish5-5.4.0-ee-bul-full.tar.gz"
+fi
+tar --strip-components=1 -xzf ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz -C ./
 
 sed -i "s/CURLOPT_CONNECTTIMEOUT, 3/CURLOPT_CONNECTTIMEOUT, 10/g" ezpublish_legacy/kernel/setup/steps/ezstep_site_types.php
 sed -i "s/\/\/umask(/umask(/g" ezpublish/console
