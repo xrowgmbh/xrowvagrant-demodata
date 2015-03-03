@@ -3,10 +3,10 @@ doctrine:
         connections:
             default:
                 driver: pdo_mysql
-                host: localhost
+                host: 192.168.0.13
                 user: root
-                password: null
-                dbname: ezpublish
+                password: 
+                dbname: ezsylius
                 charset: UTF8
 ezpublish:
     http_cache:

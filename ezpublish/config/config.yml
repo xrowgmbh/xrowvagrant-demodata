@@ -1,7 +1,8 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
+    - { resource: parameters_sylius.yml }
     - { resource: sylius.yml }
+    - { resource: security.yml }
 
 framework:
     esi:             ~
@@ -53,5 +54,29 @@ assetic:
 ez_publish_legacy:
     enabled: true
     root_dir: %kernel.root_dir%/../ezpublish_legacy
+
+
+# Sylius paramters which not work in sylius.yml
+doctrine_cache:
+    providers:
+        sylius_settings: %sylius.cache%
+
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        amazon:
+            type:          amazon
+            client_id:     %sylius.oauth.amazon.clientid%
+            client_secret: %sylius.oauth.amazon.clientsecret%
+        facebook:
+            type:          facebook
+            client_id:     %sylius.oauth.facebook.clientid%
+            client_secret: %sylius.oauth.facebook.clientsecret%
+            scope:         "email"
+        google:
+            type:          google
+            client_id:     %sylius.oauth.google.clientid%
+            client_secret: %sylius.oauth.google.clientsecret%
+            scope:         "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
 
 parameters:

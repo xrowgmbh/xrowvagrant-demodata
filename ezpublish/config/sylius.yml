@@ -1,5 +1,5 @@
 # config.yml
-framework:
+#framework:
     #translator:      { fallback: %sylius.locale% }
     #secret:          %sylius.secret%
     #router:
