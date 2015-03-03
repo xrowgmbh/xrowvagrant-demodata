@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aws github-token="494fc9bf8cf3a16695d46bce8b10bba91d0926d4" revision="1">
+    <cluster lb="xrow" update="yes">
+        <instance name="localhost">
+            <role>web</role>
+            <role>admin</role>
+            <role>solr</role>
+            <role>database</role>
+            <role>dev</role>
+        </instance>
+        <rpm>ezfind-solr</rpm>
+        <database-setting name="wait_timeout">5000</database-setting>
+        <database-setting name="interactive_timeout">5000</database-setting>
+        <environment name="sylius" docroot="web"> 
+            <bootstrap>
+                <script><![CDATA[
+#!/bin/sh
+
+SOLR_URL="[SOLR_URL]"
+DATABASE_SERVER="[DATABASE_SERVER]"
+DATABASE_USER="[DATABASE_USER]"
+DATABASE_PASSWORD="[DATABASE_PASSWORD]"
+DATABASE_NAME="[DATABASE_NAME]"
+DFS_DATABASE_SERVER="[DFS_DATABASE_SERVER]"
+DFS_DATABASE_USER="[DFS_DATABASE_USER]"
+DFS_DATABASE_PASSWORD="[DFS_DATABASE_PASSWORD]"
+DFS_DATABASE_NAME="[DFS_DATABASE_NAME]"
+DFS_MOUNT="[DFS_MOUNT]"
+AWS_KEY="[AWS_KEY]"
+AWS_SECRETKEY="[AWS_SECRETKEY]"
+AWS_ACCOUNTID="[AWS_ACCOUNTID]"
+SCRIPT=`readlink -f $0`
+SCRIPTDIR=$(dirname ${SCRIPT})
+
+wget --no-check-certificate https://raw.githubusercontent.com/xrowkristina/sylius/master/build
+source ./build
+]]></script>
+            </bootstrap>
+            <database dsn="mysql://root@192.168.0.13/sylius"/>
+            <hostname>sylius.*</hostname>
+        </environment>
+        <environment name="ez-sylius" docroot="web"> 
+            <bootstrap>
+                <script><![CDATA[
+#!/bin/sh
+VERSION="5.4"
+SOLR_URL="[SOLR_URL]"
+DATABASE_SERVER="[DATABASE_SERVER]"
+DATABASE_USER="[DATABASE_USER]"
+DATABASE_PASSWORD="[DATABASE_PASSWORD]"
+DATABASE_NAME="[DATABASE_NAME]"
+DFS_DATABASE_SERVER="[DFS_DATABASE_SERVER]"
+DFS_DATABASE_USER="[DFS_DATABASE_USER]"
+DFS_DATABASE_PASSWORD="[DFS_DATABASE_PASSWORD]"
+DFS_DATABASE_NAME="[DFS_DATABASE_NAME]"
+DFS_MOUNT="[DFS_MOUNT]"
+AWS_KEY="[AWS_KEY]"
+AWS_SECRETKEY="[AWS_SECRETKEY]"
+AWS_ACCOUNTID="[AWS_ACCOUNTID]"
+PACKAGES="http://packages.ez.no/ezpublish/${VERSION}/${VERSION}.0/"
+SCRIPT=`readlink -f $0`
+SCRIPTDIR=$(dirname ${SCRIPT})
+INSTALLATION_ID="2d9ec2ef5b21fafb0dbcda8667f9b47d"
+LICENCE_KEY="4XujB#GSve@!\$iE4XFbl"
+
+wget --no-check-certificate https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/build
+source ./build
+]]></script>
+            </bootstrap>
+            <database dsn="mysql://root@192.168.0.13/ezsylius"/>
+            <storage dsn="mysql://root@192.168.0.13/ezsylius_cluster" mount="/mnt/nas/ezsylius"/>
+            <hostname>ezs.*</hostname>
+        </environment>
+    </cluster>
+</aws>
