@@ -1,5 +1,12 @@
 # Sylius parameters
 parameters:
+    sylius.database.driver: mysqli
+    sylius.database.host: localhost
+    sylius.database.port: null
+    sylius.database.name: sylius
+    sylius.database.path: null
+    sylius.database.user: root
+    sylius.database.password: null
     sylius.mailer.transport: smtp
     sylius.mailer.host: 127.0.0.1
     sylius.mailer.port: null

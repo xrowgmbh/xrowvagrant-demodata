@@ -356,24 +356,6 @@ fos_rest:
             - { path: '^/api', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }
             - { path: '^/', stop: true }
 
-hwi_oauth:
-    firewall_name: main
-    resource_owners:
-        amazon:
-            type:          amazon
-            client_id:     %sylius.oauth.amazon.clientid%
-            client_secret: %sylius.oauth.amazon.clientsecret%
-        facebook:
-            type:          facebook
-            client_id:     %sylius.oauth.facebook.clientid%
-            client_secret: %sylius.oauth.facebook.clientsecret%
-            scope:         "email"
-        google:
-            type:          google
-            client_id:     %sylius.oauth.google.clientid%
-            client_secret: %sylius.oauth.google.clientsecret%
-            scope:         "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
-
 jms_serializer:
     metadata:
         directories:
@@ -464,11 +446,6 @@ cmf_routing:
             phpcr:
                 enabled: true
                 route_basepath: /cms/routes
-
-doctrine_cache:
-    providers:
-        phpcr_meta: %sylius.cache%
-        phpcr_nodes: %sylius.cache%
 
 cmf_create:
     security:

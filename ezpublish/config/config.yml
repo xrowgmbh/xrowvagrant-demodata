@@ -60,6 +60,8 @@ ez_publish_legacy:
 doctrine_cache:
     providers:
         sylius_settings: %sylius.cache%
+        phpcr_meta: %sylius.cache%
+        phpcr_nodes: %sylius.cache%
 
 hwi_oauth:
     firewall_name: main

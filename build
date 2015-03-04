@@ -90,10 +90,10 @@ sed -i "s/user: root/user: ${DATABASE_USER}/g" ezpublish/config/ezpublish.yml
 sed -i "s/password: null/password: ${DATABASE_PASSWORD}/g" ezpublish/config/ezpublish.yml
 sed -i "s/dbname: ezpublish/dbname: ${DATABASE_NAME}/g" ezpublish/config/ezpublish.yml
 
-sed -i "s/sylius.database.host: localhost/sylius.database.host: ${DATABASE_SERVER}/g" ezpublish/config/parameters.yml
-sed -i "s/sylius.database.name: sylius/sylius.database.name: sylius_dev/g" ezpublish/config/parameters.yml
-sed -i "s/sylius.database.user: root/sylius.database.user: ${DATABASE_USER}/g" ezpublish/config/parameters.yml
-sed -i "s/sylius.database.password: null/sylius.database.password: ${DATABASE_PASSWORD}/g" ezpublish/config/parameters.yml
+sed -i "s/sylius.database.host: localhost/sylius.database.host: ${DATABASE_SERVER}/g" ezpublish/config/parameters_sylius.yml
+sed -i "s/sylius.database.name: sylius/sylius.database.name: sylius/g" ezpublish/config/parameters_sylius.yml
+sed -i "s/sylius.database.user: root/sylius.database.user: ${DATABASE_USER}/g" ezpublish/config/parameters_sylius.yml
+sed -i "s/sylius.database.password: null/sylius.database.password: ${DATABASE_PASSWORD}/g" ezpublish/config/parameters_sylius.yml
 
 sed -i "s/Server=localhost/Server=${DATABASE_SERVER}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
 sed -i "s/User=root/User=${DATABASE_USER}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php

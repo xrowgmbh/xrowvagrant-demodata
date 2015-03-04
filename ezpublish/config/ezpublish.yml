@@ -3,11 +3,19 @@ doctrine:
         connections:
             default:
                 driver: pdo_mysql
-                host: 192.168.0.13
+                host: localhost
                 user: root
                 password: 
                 dbname: ezsylius
                 charset: UTF8
+            sylius:
+                driver:   %sylius.database.driver%
+                host:     %sylius.database.host%
+                port:     %sylius.database.port%
+                dbname:   %sylius.database.name%
+                user:     %sylius.database.user%
+                password: %sylius.database.password%
+                charset:  UTF8
 ezpublish:
     http_cache:
         purge_type: local
