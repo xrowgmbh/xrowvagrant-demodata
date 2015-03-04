@@ -14,7 +14,7 @@
   Deny from all
 </Files>
 
-SetEnv ENVIRONMENT "prod"
+SetEnv ENVIRONMENT "dev"
 SetEnv USE_DEBUGGING 1
 SetEnv USE_HTTP_CACHE 0
 SetEnv TRUSTED_PROXIES "127.0.0.1"
