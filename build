@@ -1,1 +1,4 @@
 #!/usr/bin/env sh
+
+composer create-project ezsystems/ezplatform .
+php ezpublish/console ezplatform:install demo
