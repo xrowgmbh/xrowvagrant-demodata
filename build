@@ -2,6 +2,6 @@
 
 SCRIPT=`basename $0`
 rm -Rf $SCRIPT
-
+COMPOSER_NO_INTERACTION=1
 composer create-project ezsystems/ezplatform .
 php ezpublish/console ezplatform:install demo
