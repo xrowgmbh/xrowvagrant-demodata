@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
-ls -lisa .
+SCRIPT=`basename $0`
+rm -Rf $SCRIPT
 composer create-project ezsystems/ezplatform .
 php ezpublish/console ezplatform:install demo
