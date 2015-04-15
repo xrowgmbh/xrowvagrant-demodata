@@ -2,9 +2,9 @@
 
 COMPOSER_NO_INTERACTION=1
 sudo rm -Rf * .gitignore .travis.yml
-composer -vvv create-project symfony/framework-standard-edition . 2.5.* --prefer-dist --no-interaction
+composer -vvv create-project symfony/framework-standard-edition . 2.6.* --prefer-dist --no-interaction
 
-cat <<EOL > app/config/parameters2.yml
+cat <<EOL > app/config/parameters.yml
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
@@ -24,7 +24,7 @@ parameters:
     use_assetic_controller: true
     database_path: null
 EOL
-cp app/config/parameters2.yml app/config/parameters2.yml.dist
+cp app/config/parameters.yml app/config/parameters.yml.dist
 
 sed -i "s/\/\/umask(/umask(/g" app/console
 sed -i "s/\/\/umask(/umask(/g" web/app_dev.php
