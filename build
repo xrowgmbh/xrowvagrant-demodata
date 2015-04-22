@@ -18,9 +18,8 @@ echo \$_GET['error'] . " Building try later.";
 exit();
 EOL
 
-COMPOSER_NO_INTERACTION=1
 if [ ! -f ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz ]; then
-    wget -O ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz --no-check-certificate "http://packages.xrow.com/software/5.4/ezpublish5-5.4.0-ee-bul-full.tar.gz"
+    wget –quiet -O ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz --no-check-certificate "http://packages.xrow.com/software/5.4/ezpublish5-5.4.0-ee-bul-full.tar.gz"
 fi
 tar --strip-components=1 -xzf ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz -C ./
 
