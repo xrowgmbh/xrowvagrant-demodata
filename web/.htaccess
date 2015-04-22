@@ -102,7 +102,7 @@ DirectoryIndex index.php
 </IfModule>
 
 <IfModule mod_headers.c>
-    <FilesMatch "\.(css|js|gif|jpg|png|swf|xml|ico|oga|m4a|ogv|mp4|webm|eot|ttf|otf|woff)$"> 
+    <FilesMatch "\.(css|js|gif|jpg|png|svg|swf|xml|ico|oga|m4a|ogv|mp4|webm|eot|ttf|otf|woff)$"> 
         Header Set Pragma "public"
         Header Set Cache-Control "public, must-revalidate, max-age=2592000"
         Header Set Edge-control "!log-cookie,max-age=2592000,downstream-ttl=86400"
