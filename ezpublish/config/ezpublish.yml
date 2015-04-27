@@ -1,13 +1,18 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: parameters_sylius.yml }
+
 doctrine:
     dbal:
         connections:
             default:
-                driver: pdo_mysql
-                host: localhost
-                user: root
-                password: 
-                dbname: ezsylius
-                charset: UTF8
+                charset:  UTF8
+                driver:   pdo_mysql
+                port:     3306
+                host:     %database.host%
+                dbname:   %database.name%
+                user:     %database.user%
+                password: %database.password%
             #sylius:
             #    driver:   mysqli
             #    host:     localhost

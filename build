@@ -87,10 +87,10 @@ echo "For solr indexing run:"
 echo "php ezpublish/console ezpublish:legacy:script --env=dev -n extension/ezfind/bin/php/updatesearchindexsolr.php"
 
 # set the right database
-sed -i "s/host: localhost/host: ${DATABASE_SERVER}/g" ezpublish/config/ezpublish.yml
-sed -i "s/user: root/user: ${DATABASE_USER}/g" ezpublish/config/ezpublish.yml
-sed -i "s/password: null/password: ${DATABASE_PASSWORD}/g" ezpublish/config/ezpublish.yml
-sed -i "s/dbname: ezpublish/dbname: ${DATABASE_NAME}/g" ezpublish/config/ezpublish.yml
+sed -i "s/database.host: localhost/database.host: ${DATABASE_SERVER}/g" ezpublish/config/parameters.yml
+sed -i "s/database.name: ezpublish/database.name: ${DATABASE_NAME}/g" ezpublish/config/parameters.yml
+sed -i "s/database.user: root/database.user: ${DATABASE_USER}/g" ezpublish/config/parameters.yml
+sed -i "s/database.password: publish/database.password: ${DATABASE_PASSWORD}/g" ezpublish/config/parameters.yml
 
 sed -i "s/Server=localhost/Server=${DATABASE_SERVER}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
 sed -i "s/User=root/User=${DATABASE_USER}/g" ezpublish_legacy/settings/siteaccess/ezdemo_site_admin/site.ini.append.php
