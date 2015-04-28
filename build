@@ -52,12 +52,11 @@ EOL
 rm -f composer.json
 wget --no-check-certificate -O composer.json https://raw.githubusercontent.com/xrowgmbh/xrowvagrant-demodata/ez-sylius/composer.json
 
-php /var/www/sites/composer.phar -n update
+composer -n update
 
 chmod 755 ezpublish/console
 
-ezpublish/console -n assets:install --symlink --relative web
-ezpublish/console -n ezpublish:legacy:assets_install --symlink --relative web
+ezpublish/console -n assets:install --symlink --relative
 # ether
 #ezpublish/console -n assetic:dump --env=prod
 # or
