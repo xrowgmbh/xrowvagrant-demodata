@@ -1,6 +1,5 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: parameters_sylius.yml }
 
 doctrine:
     dbal:
@@ -14,12 +13,14 @@ doctrine:
                 user:     %database.user%
                 password: %database.password%
             #sylius:
-            #    driver:   mysqli
-            #    host:     localhost
-            #    dbname:   sylius
-            #    user:     root
-            #    password: 
+            #    driver:   %sylius.database.driver%
+            #    host:     %sylius.database.host%
+            #    port:     %sylius.database.port%
+            #    dbname:   %sylius.database.name%
+            #    user:     %sylius.database.user%
+            #    password: %sylius.database.password%
             #    charset:  UTF8
+
 ezpublish:
     http_cache:
         purge_type: local
