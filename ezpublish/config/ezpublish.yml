@@ -5,7 +5,7 @@ imports:
 doctrine:
     dbal:
         connections:
-            default:
+            ger_repository_connection:
                 charset:  UTF8
                 driver:   pdo_mysql
                 port:     3306
