@@ -7,7 +7,7 @@ stof_doctrine_extensions:
             timestampable: true
 # Sylius
 sylius_cart:
-    resolver: app.cart_item_resolver 
+    resolver: sylius.cart_item_resolver.default
     classes: ~
 sylius_order:
     driver: doctrine/orm 
