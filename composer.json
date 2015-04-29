@@ -49,7 +49,8 @@
         "sylius/order-bundle": "0.12",
         "sylius/product-bundle": "0.12",
         "sylius/resource-bundle": "0.12",
-        "sylius/cart-bundle": "0.12"
+        "sylius/cart-bundle": "0.12",
+        "sylius/components": "0.12"
     },
     "require-dev": {
         "behat/behat": "3.0.*",

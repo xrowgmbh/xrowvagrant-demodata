@@ -9,18 +9,23 @@ stof_doctrine_extensions:
 sylius_cart:
     resolver: sylius.cart_item_resolver.default
     classes: ~
+
 sylius_order:
     driver: doctrine/orm 
     classes:
         order:
-            model: Project\EshopBundle\Entity\Order
+            model: Sylius\Component\Core\Model\Order
+
 sylius_money: ~
+
 sylius_product:
-    driver: doctrine/orm 
+    driver: doctrine/orm
     classes:
         product:
-            model: Project\EshopBundle\Entity\Product
+            model: Sylius\Component\Core\Model\Product
+
 sylius_attribute:
     driver: doctrine/orm 
+
 sylius_variation:
     driver: doctrine/orm 
