@@ -9,14 +9,6 @@ security:
     providers:
         ezpublish:
             id: ezpublish.security.user_provider
-        # sylius
-        fos_userbundle:
-            id: fos_user.user_provider.username_email
-#        in_memory:
-#            memory:
-#                users:
-#                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-#                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         dev:
@@ -40,49 +32,6 @@ security:
             form_login:
                 require_previous_session: false
             logout: ~
-
-#        secured_area:
-#            pattern:    ^/demo/secured/
-#            form_login:
-#                check_path: /demo/secured/login_check
-#                login_path: /demo/secured/login
-#            logout:
-#                path:   /demo/secured/logout
-#                target: /demo/
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
-
-        # sylius
-        main:
-            switch_user: { role: ROLE_SYLIUS_ADMIN }
-            context:     user
-            pattern:     /.*
-            form_login:
-                provider: fos_userbundle
-                login_path: /login
-                check_path: /login_check
-                failure_path: /login
-                default_target_path: /
-                use_forward:  false
-                use_referer: true
-            remember_me:
-                key: %sylius.secret%
-                name: APP_REMEMBER_ME
-                lifetime: 31536000
-                always_remember_me: true
-                remember_me_parameter: _remember_me
-            oauth:
-                resource_owners:
-                    amazon:   "/login/check-amazon"
-                    facebook: "/login/check-facebook"
-                    google:   "/login/check-google"
-                login_path:   /connect
-                failure_path: /connect
-                oauth_user_provider:
-                    service: sylius.oauth.user_provider
-            logout: true
-            anonymous: true
 
     access_control:
         #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
