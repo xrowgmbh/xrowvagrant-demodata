@@ -3,14 +3,15 @@ imports:
 
 doctrine:
     dbal:
-        default:
-            charset:  UTF8
-            driver:   pdo_mysql
-            port:     3306
-            host:     %database.host%
-            dbname:   %database.name%
-            user:     %database.user%
-            password: %database.password%
+        connections:
+            default:
+                charset:  UTF8
+                driver:   pdo_mysql
+                port:     3306
+                host:     %database.host%
+                dbname:   %database.name%
+                user:     %database.user%
+                password: %database.password%
 
 ezpublish:
     http_cache:
