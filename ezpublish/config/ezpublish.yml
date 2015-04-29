@@ -3,15 +3,16 @@ imports:
 
 doctrine:
     dbal:
-        connections:
-            default:
-                charset:  UTF8
-                driver:   pdo_mysql
-                port:     3306
-                host:     %database.host%
-                dbname:   %database.name%
-                user:     %database.user%
-                password: %database.password%
+        charset:  UTF8
+        driver:   pdo_mysql
+        port:     3306
+        host:     %database.host%
+        dbname:   %database.name%
+        user:     %database.user%
+        password: %database.password%
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
 
 ezpublish:
     http_cache:
@@ -42,7 +43,6 @@ ezpublish:
     repositories:
         ger_repository:
             engine: legacy
-            connection: default
     siteaccess:
         default_siteaccess: ger
         list:
