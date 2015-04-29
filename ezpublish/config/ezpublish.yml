@@ -3,23 +3,14 @@ imports:
 
 doctrine:
     dbal:
-        connections:
-            ger_repository_connection:
-                charset:  UTF8
-                driver:   pdo_mysql
-                port:     3306
-                host:     %database.host%
-                dbname:   %database.name%
-                user:     %database.user%
-                password: %database.password%
-            #sylius:
-            #    driver:   %sylius.database.driver%
-            #    host:     %sylius.database.host%
-            #    port:     %sylius.database.port%
-            #    dbname:   %sylius.database.name%
-            #    user:     %sylius.database.user%
-            #    password: %sylius.database.password%
-            #    charset:  UTF8
+        default:
+            charset:  UTF8
+            driver:   pdo_mysql
+            port:     3306
+            host:     %database.host%
+            dbname:   %database.name%
+            user:     %database.user%
+            password: %database.password%
 
 ezpublish:
     http_cache:
@@ -50,7 +41,7 @@ ezpublish:
     repositories:
         ger_repository:
             engine: legacy
-            connection: ger_repository_connection
+            connection: default
     siteaccess:
         default_siteaccess: ger
         list:

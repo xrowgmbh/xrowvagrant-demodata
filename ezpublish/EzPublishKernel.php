@@ -28,60 +28,21 @@ class EzPublishKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
-            new Sylius\Bundle\InstallerBundle\SyliusInstallerBundle(),
-            new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
-            new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
-            new Sylius\Bundle\CurrencyBundle\SyliusCurrencyBundle(),
-            new Sylius\Bundle\ContactBundle\SyliusContactBundle(),
-            new Sylius\Bundle\LocaleBundle\SyliusLocaleBundle(),
-            new Sylius\Bundle\SettingsBundle\SyliusSettingsBundle(),
-            new Sylius\Bundle\CartBundle\SyliusCartBundle(),
-            new Sylius\Bundle\ProductBundle\SyliusProductBundle(),
-            new Sylius\Bundle\VariationBundle\SyliusVariationBundle(),
-            new Sylius\Bundle\AttributeBundle\SyliusAttributeBundle(),
-            new Sylius\Bundle\TaxationBundle\SyliusTaxationBundle(),
-            new Sylius\Bundle\ShippingBundle\SyliusShippingBundle(),
-            new Sylius\Bundle\PaymentBundle\SyliusPaymentBundle(),
-            new Sylius\Bundle\PayumBundle\SyliusPayumBundle(),
-            new Sylius\Bundle\PromotionBundle\SyliusPromotionBundle(),
-            new Sylius\Bundle\AddressingBundle\SyliusAddressingBundle(),
-            new Sylius\Bundle\InventoryBundle\SyliusInventoryBundle(),
-            new Sylius\Bundle\TaxonomyBundle\SyliusTaxonomyBundle(),
-            new Sylius\Bundle\FlowBundle\SyliusFlowBundle(),
-            new Sylius\Bundle\PricingBundle\SyliusPricingBundle(),
-            new Sylius\Bundle\SequenceBundle\SyliusSequenceBundle(),
-            new Sylius\Bundle\ContentBundle\SyliusContentBundle(),
-            new Sylius\Bundle\TranslationBundle\SyliusTranslationBundle(),
-            new Sylius\Bundle\ArchetypeBundle\SyliusArchetypeBundle(),
-
-            new Sylius\Bundle\CoreBundle\SyliusCoreBundle(),
-            new Sylius\Bundle\WebBundle\SyliusWebBundle(),
-            new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
-            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-            new Sylius\Bundle\ApiBundle\SyliusApiBundle(),
-
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Symfony\Cmf\Bundle\CoreBundle\CmfCoreBundle(),
-            new Symfony\Cmf\Bundle\BlockBundle\CmfBlockBundle(),
-            new Symfony\Cmf\Bundle\ContentBundle\CmfContentBundle(),
-            new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
-            new Symfony\Cmf\Bundle\MenuBundle\CmfMenuBundle(),
-            new Symfony\Cmf\Bundle\CreateBundle\CmfCreateBundle(),
-            new Symfony\Cmf\Bundle\MediaBundle\CmfMediaBundle(),
-
-            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
-
-            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
-
-            new FOS\UserBundle\FOSUserBundle(),
-            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-            new Payum\Bundle\PayumBundle\PayumBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
-            new JMS\TranslationBundle\JMSTranslationBundle(),
-            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            // Sylius Order Bundle dependencies
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
+            new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
+            // Sylius Ressources Bundle dependencies
+            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+            
+            // Sylius Cart Bundle dependencies
+            new Sylius\Bundle\CartBundle\SyliusCartBundle(),
+            
+            // Sylius Product Bundle
+            new Sylius\Bundle\ProductBundle\SyliusProductBundle(),
+            new Sylius\Bundle\AttributeBundle\SyliusAttributeBundle(),
+            new Sylius\Bundle\VariationBundle\SyliusVariationBundle(),
+
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
