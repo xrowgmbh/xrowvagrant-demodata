@@ -55,8 +55,6 @@ class EzPublishKernel extends Kernel
             new Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new FOS\HttpCacheBundle\FOSHttpCacheBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
-            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new eZ\Bundle\EzPublishCoreBundle\EzPublishCoreBundle(),
             new eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle( $this ),
             new eZ\Bundle\EzPublishIOBundle\EzPublishIOBundle(),
