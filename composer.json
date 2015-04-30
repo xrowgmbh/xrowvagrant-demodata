@@ -11,17 +11,7 @@
     ],
     "repositories": [
         { "type": "composer", "url": "https://updates.ez.no/bul" },
-        { "type":"package",
-            "package": {
-                "name": "sylius/components",
-                "version": "master",
-                "sources": {
-                    "url": "https://github.com/xrowkristina/ez-sylius.git",
-                    "type": "git",
-                    "reference":"master"
-                }
-            }
-        }
+        { "type": "git", "url": "https://github.com/xrowkristina/components.git" }
     ],
     "autoload": {
         "psr-0": { "": "src/" }
@@ -62,7 +52,7 @@
         "sylius/resource-bundle": "0.12",
         "sylius/cart-bundle": "0.12",
         "sylius/taxation-bundle": "0.12.0",
-        "sylius/components": "master"
+        "sylius/components": "0.1"
     },
     "require-dev": {
         "behat/behat": "3.0.*",
