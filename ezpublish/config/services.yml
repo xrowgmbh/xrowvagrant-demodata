@@ -1,0 +1,10 @@
+services:
+    sylius.cart_item_resolver.default:
+        class: Sylius\Component\Cart\ItemResolver
+        arguments:
+            - @sylius.cart_provider
+            - @sylius.repository.product
+            - @form.factory
+            - @sylius.availability_checker
+            - @sylius.checker.restricted_zone
+            - @sylius.price_calculator
