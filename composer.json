@@ -52,7 +52,7 @@
         "sylius/resource-bundle": "0.12",
         "sylius/cart-bundle": "0.12",
         "sylius/taxation-bundle": "0.12.0",
-        "sylius/components": "0.1"
+        "sylius/components": "1.0"
     },
     "require-dev": {
         "behat/behat": "3.0.*",
