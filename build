@@ -62,8 +62,8 @@ ezpublish/console -n assetic:dump --env=prod
 ezpublish/console -n assetic:dump --env=dev
 composer -n dump-autoload --optimize
 
-wget --no-check-certificate -O web/robots.txt https://raw.github.com/xrowgmbh/xrowvagrant/${VERSION}/ezcluster/templates/robots.txt
-wget --no-check-certificate -O web/.htaccess https://raw.github.com/xrowgmbh/xrowvagrant/${VERSION}/ezcluster/templates/.htaccess
+wget --no-check-certificate -O web/robots.txt https://raw.github.com/xrowgmbh/xrowvagrant-demo/${VERSION}/web/robots.txt
+wget --no-check-certificate -O web/.htaccess https://raw.github.com/xrowgmbh/xrowvagrant-demo/${VERSION}/web/.htaccess
 
 cp -a /usr/share/ezcluster/bin/tools/* .
 source ./insertdemo.sh
