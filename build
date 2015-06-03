@@ -6,12 +6,12 @@ if [ ! -d ./web ]; then
 fi
 cat <<EOL > ./web/.htaccess
 RewriteEngine On
-RewriteRule .* error.php?error=503
+RewriteRule .* error.php?error=906
 EOL
 
 cat <<EOL > ./web/error.php
 <?php
-if ( !isset( \$_GET['error'] ) ){ \$_GET['error'] = 503; }
+if ( !isset( \$_GET['error'] ) ){ \$_GET['error'] = 906; }
 header('HTTP/1.1 '.\$_GET['error'].' Service Temporarily Unavailable');
 header('Retry-After: 600');
 echo \$_GET['error'] . " Building try later.";
