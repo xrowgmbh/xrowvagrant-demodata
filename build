@@ -4,10 +4,7 @@ VERSION="5.4"
 if [ ! -d ./web ]; then
   mkdir ./web
 fi
-cat <<EOL > ./web/.htaccess
-RewriteEngine On
-RewriteRule .* error.php?error=906
-EOL
+
 
 cat <<EOL > ./web/error.php
 <?php
@@ -17,7 +14,10 @@ header('Retry-After: 600');
 echo \$_GET['error'] . " Building try later.";
 exit();
 EOL
-
+cat <<EOL > ./web/.htaccess
+RewriteEngine On
+RewriteRule .* error.php?error=906
+EOL
 if [ ! -f ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz ]; then
     wget --quiet -O ~/ezpublish5-${VERSION}.0-ee-bul-full.tar.gz --no-check-certificate "http://packages.xrow.com/software/5.4/ezpublish5-5.4.0-ee-bul-full.tar.gz"
 fi
