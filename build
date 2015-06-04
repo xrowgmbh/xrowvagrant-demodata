@@ -2,9 +2,25 @@
 
 SCRIPT=`basename $0`
 rm -Rf $SCRIPT
+
+cat <<EOL > ./auth.json
+{
+    "http-basic": {
+        "updates.ez.no": {
+            "username": "${INSTALLATION_ID}",
+            "password": "${LICENCE_KEY}"
+        }
+    }
+}
+EOL
+
 COMPOSER_NO_INTERACTION=1
 mkdir tmp
 composer create-project --no-dev ezsystems/ezplatform tmp dev-master
 mv tmp/* .
 rm -Rf tmp/
+
+find {ezpublish/{cache,logs,config,sessions},web} -type d | xargs chmod -R 777
+find {ezpublish/{cache,logs,config},web} -type f | xargs chmod -R 666
+
 php ezpublish/console ezplatform:install demo
