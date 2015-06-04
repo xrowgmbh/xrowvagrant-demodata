@@ -3,5 +3,8 @@
 SCRIPT=`basename $0`
 rm -Rf $SCRIPT
 COMPOSER_NO_INTERACTION=1
-composer create-project ezsystems/ezplatform . dev-master
+mkdir tmp
+composer create-project ezsystems/ezplatform tmp dev-master
+mv tmp/* .
+rm -Rf tmp/
 php ezpublish/console ezplatform:install demo
