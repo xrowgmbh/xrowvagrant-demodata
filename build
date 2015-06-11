@@ -37,6 +37,9 @@ sed -i "/^\[RepositorySettings\]/,/^\[/ {
         s|^RemotePackagesIndexURL[[:blank:]]*=.*|RemotePackagesIndexURL=http:\/\/packages.ez.no\/ezpublish\/5.4\/5.4.0\/|
 }" ezpublish_legacy/settings/package.ini
 
+cp -a /usr/share/ezcluster/bin/tools/* .
+source ./insertdemo.sh
+
 find {ezpublish/{cache,logs,config,sessions},ezpublish_legacy/{design,extension,settings,var},web} -type d | xargs chmod -R 777
 find {ezpublish/{cache,logs,config,sessions},ezpublish_legacy/{design,extension,settings,var},web} -type f | xargs chmod -R 666
 
@@ -66,6 +69,5 @@ composer -n dump-autoload --optimize
 wget --no-check-certificate -O web/robots.txt https://raw.github.com/xrowgmbh/xrowvagrant-demodata/${VERSION}/web/robots.txt
 wget --no-check-certificate -O web/.htaccess https://raw.github.com/xrowgmbh/xrowvagrant-demodata/${VERSION}/web/.htaccess
 
-cp -a /usr/share/ezcluster/bin/tools/* .
-source ./insertdemo.sh
+
 source ./cache.sh
