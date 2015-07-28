@@ -6,10 +6,8 @@ Disallow: /content/search/
 Disallow: /content/advancedsearch/
 Disallow: /content/pdf/
 Disallow: /content/tipafriend/
-Disallow: /design/
-Disallow: /extension/
 Disallow: /layout/set/
 
 # Example Agent Disallow
-#User-agent: infometrics
+#User-agent: johndoe
 #Disallow: / 
