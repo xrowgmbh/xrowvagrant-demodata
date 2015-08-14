@@ -2,6 +2,15 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
 
+parameters:
+    secret: ThisTokenIsNotSoSecretChangeIt
+    locale_fallback: en
+    ezpublish_legacy.default.view_default_layout: eZDemoBundle::pagelayout.html.twig
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user:
+    mailer_password:
+    
 framework:
     esi:             ~
     translator:      { fallback: %locale_fallback% }
