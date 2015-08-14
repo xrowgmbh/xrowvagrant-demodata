@@ -62,12 +62,10 @@ composer -n require --prefer-dist ezsystems/eztags-ls
 chmod 755 ezpublish/console
 ezpublish/console -n assets:install --symlink --relative web
 ezpublish/console -n ezpublish:legacy:assets_install --symlink --relative web
-ezpublish/console -n assetic:dump --env=prod
-ezpublish/console -n assetic:dump --env=dev
+ezpublish/console -n assetic:dump
 composer -n dump-autoload --optimize
 
 wget --no-check-certificate -O web/robots.txt https://raw.github.com/xrowgmbh/xrowvagrant-demodata/${VERSION}/web/robots.txt
 wget --no-check-certificate -O web/.htaccess https://raw.github.com/xrowgmbh/xrowvagrant-demodata/${VERSION}/web/.htaccess
-
 
 source ./cache.sh
