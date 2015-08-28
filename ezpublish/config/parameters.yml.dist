@@ -1,1 +1,5 @@
 parameters:
+    database.user: 
+    database.password: 
+    database.server: 
+    database.name: 
