@@ -68,7 +68,8 @@ fos_http_cache:
         defaults:
             overwrite: false
         rules:
-            - match:
+            - 
+                match:
                     path: ^/
                 headers:
                     cache_control: { public: true, max_age: 3600, s_maxage: 3600 }
