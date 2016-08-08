@@ -33,7 +33,7 @@ cat <<EOL > ./auth.json
 }
 EOL
 composer -n update
-composer -n require --prefer-dist ezsystems/ezfind-ls:${VERSION}.*
+composer -n require --prefer-dist ezsystems/ezfind-ls:dev-master
 composer -n require --prefer-dist ezsystems/eztags-ls
 #composer -n require ezsystems/platform-ui-bundle:dev-master
 #composer -n require xrow/ezpublish-solrdocs-bundle:dev-master
