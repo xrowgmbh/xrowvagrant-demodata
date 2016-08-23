@@ -1,0 +1,66 @@
+--- vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Composer/ScriptHandler.php
++++ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishCoreBundle/Composer/ScriptHandler.php
+@@ -9,16 +9,16 @@
+ namespace eZ\Bundle\EzPublishCoreBundle\Composer;
+ 
+ use Sensio\Bundle\DistributionBundle\Composer\ScriptHandler as DistributionBundleScriptHandler;
+-use Composer\Script\CommandEvent;
++use Composer\Script\Event;
+ 
+ class ScriptHandler extends DistributionBundleScriptHandler
+ {
+     /**
+      * Dump minified assets for prod environment under the web root directory.
+      *
+-     * @param $event CommandEvent A instance
++     * @param $event Event A instance
+      */
+-    public static function dumpAssets(CommandEvent $event)
++    public static function dumpAssets(Event $event)
+     {
+         $options = self::getOptions($event);
+         $appDir = $options['symfony-app-dir'];
+@@ -57,9 +57,9 @@ public static function dumpAssets(CommandEvent $event)
+      * Typically to use this instead on composer update as dump command uses prod environment where cache is not cleared,
+      * causing it to sometimes crash when cache needs to be cleared.
+      *
+-     * @param $event CommandEvent A instance
++     * @param $event Event A instance
+      */
+-    public static function dumpAssetsHelpText(CommandEvent $event)
++    public static function dumpAssetsHelpText(Event $event)
+     {
+         $event->getIO()->write('<info>To dump eZ Publish production assets, execute the following:</info>');
+         $event->getIO()->write('    php ezpublish/console assetic:dump --env=prod web');
+--- vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Composer/ScriptHandler.php
++++ vendor/ezsystems/ezpublish-kernel/eZ/Bundle/EzPublishLegacyBundle/Composer/ScriptHandler.php
+@@ -9,7 +9,7 @@
+ namespace eZ\Bundle\EzPublishLegacyBundle\Composer;
+ 
+ use Sensio\Bundle\DistributionBundle\Composer\ScriptHandler as DistributionBundleScriptHandler;
+-use Composer\Script\CommandEvent;
++use Composer\Script\Event;
+ 
+ class ScriptHandler extends DistributionBundleScriptHandler
+ {
+@@ -23,9 +23,9 @@ class ScriptHandler extends DistributionBundleScriptHandler
+      * strict user permission checks (which can be done on Windows 7 but not on Windows
+      * Vista).
+      *
+-     * @param $event CommandEvent A instance
++     * @param $event Event A instance
+      */
+-    public static function installAssets(CommandEvent $event)
++    public static function installAssets(Event $event)
+     {
+         $options = self::getOptions($event);
+         $appDir = $options['symfony-app-dir'];
+@@ -53,7 +53,7 @@ public static function installAssets(CommandEvent $event)
+         static::executeCommand($event, $appDir, 'ezpublish:legacy:assets_install ' . $symlink . escapeshellarg($webDir));
+     }
+ 
+-    public static function installLegacyBundlesExtensions(CommandEvent $event)
++    public static function installLegacyBundlesExtensions(Event $event)
+     {
+         $options = self::getOptions($event);
+         $appDir = $options['symfony-app-dir'];
