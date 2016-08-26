@@ -4,7 +4,7 @@ VERSION="5.4"
 
 wget --quiet -O ezpublish5-${VERSION}.0-ee-bul-full.tar.gz --no-check-certificate "http://packages.xrow.com/software/5.4/ezpublish5-5.4.0-ee-bul-full.tar.gz"
 tar --skip-old-files --strip-components=1 -xzf ezpublish5-${VERSION}.0-ee-bul-full.tar.gz -C ./
-
+rm -Rf ezpublish5-${VERSION}.0-ee-bul-full.tar.gz
 
 echo "Apply patches"
 for file in $(find ./patches -iname '*.diff' | sort); do 
