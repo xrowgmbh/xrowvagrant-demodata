@@ -75,6 +75,7 @@ class EzPublishKernel extends Kernel
             new WhiteOctoberBreadcrumbsBundle(),
             new NelmioCorsBundle(),
             new KnpMenuBundle(),
+            new eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle(),
             new OneupFlysystemBundle()
         );
         if ( is_dir( realpath( dirname(__FILE__) . "/../vendor/xrow/ezpublish-solrdocs-bundle" ) ) )
