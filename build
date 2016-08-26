@@ -39,6 +39,8 @@ cat <<EOL > ./auth.json
     }
 }
 EOL
+php -r "copy('https://getcomposer.org/download/1.0.3/composer.phar', 'composer.phar');"
+php -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts ezsystems/ezpublish-legacy-installer
 
 composer -n update
 composer -n require --prefer-dist ezsystems/ezfind-ls:dev-master
